@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生成账号</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script type="text/javascript" src="../commom/bootstrap.js"></script>
+    <link rel="stylesheet" href="../css/login1.css">
+</head>
+<body style="background-color: #f0f0f0; text-align:center">
+<div style="height: 30px"></div>
+<img src="../img/logo1.png" style="width: 450px;height: 130px;position: relative;left:80px">
+<div style="margin:0 auto;width: 400px;background-color: white">
+    <div class="tab-content">
+        <div class="tab-pane active" id="register">
+            <div style="height: 30px"></div>
+            <div style="margin-bottom: 20px">
+                <input id="token" class="login-input pl1" placeholder="密钥" required="required">
+            </div>
+            <div style="margin-bottom: 20px">
+                <input id="name" class="login-input pl1" placeholder="名称" required="required">
+            </div>
+            <div style="margin-bottom: 20px">
+                <input id="phone" class="login-input pl1" placeholder="手机号" required="required">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <select id="type" style="width: 333px;height: 39px; border: 1px solid #d0d0d0;">
+                    <option value="0">承运方</option>
+                    <option value="2">生产商</option>
+                    <option value="1">政府</option>
+                </select>
+            </div>
+            <div id="_dept" style="margin-bottom: 20px;display: none">
+                <select id="dept" style="width: 333px;height: 39px; border: 1px solid #d0d0d0;">
+                    <option value="0">运管</option>
+                    <option value="1">交警</option>
+                    <option value="2">环保</option>
+                    <option value="3">消防</option>
+                    <option value="4">安检</option>
+                </select>
+            </div>
+            <div style="margin-bottom: 20px">
+                <input id="username" class="login-input pl1" placeholder="用户名(系统生成)" >
+            </div>
+            <div style="margin-bottom: 20px">
+                <input id="password" class="login-input pl1" placeholder="密码(系统生成)" >
+            </div>
+            <div>
+                <button id="register-btn" class="login-btn btn">生成账号</button>
+            </div>
+            <div>
+                <p id="info" style="color: red;"></p>
+            </div>
+        </div>
+    </div>
+    <div style="height: 10px;position: relative;top:-20px"></div>
+</div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        $("#type").change(function () {
+            if($(this).val() == 1){
+                $("#_dept").css("display","block");
+            }
+            else{
+                $("#_dept").css("display","none");
+            }
+        });
+
+        $("#register-btn").click(function () {
+            var data = {};
+            data["token"] = $("#token").val();
+            data["type"] = $("#type").val();
+            data["name"] = $("#name").val();
+            data["phone"] = $("#phone").val();
+            if(data["type"] == 1){
+                data["dept"] = $("#dept").val();
+            }
+            $.ajax({
+                url:"http://120.76.219.196:85/user/getAccount",
+                type:'post',
+                dataType:'json',
+                data:data,
+                success:function (response) {
+                    var password = response.content.password;
+                    var username = response.content.username;
+                    $("#password").val(password);
+                    $("#username").val(username);
+
+                }
+            })
+
+
+        })
+
+
+    })
+</script>

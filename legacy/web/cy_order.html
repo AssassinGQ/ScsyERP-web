@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>订单派发</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="../commom/bootstrap-paginator.js"></script>
+    <!--<script src="../commom/echarts.min.js"></script> -->
+    <script src="../commom/bootstrap-select.min.js"></script>
+    <script src="../commom/defaults-zh_CN.min.js"></script>
+    <script src="../commom/bootstrap-table.js"></script>
+    <script src="../commom/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script src="../commom/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script src="../commom/cy_common.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-table.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="../css/maincss.css">
+    <script src="../js/cy_order.js"></script>
+</head>
+
+<div class="modal fade" id="check_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 900px">
+            <div class="modal-header">
+                <h4 class="modal-title">查看信息</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <table id="detail_table" class="input_table">
+                    <colgroup>
+                        <col style="width:120px">
+                        <col style="width:180px">
+                        <col style="width:120px">
+                        <col style="width:180px">
+                        <col style="width:120px">
+                        <col style="width:180px">
+                    </colgroup>
+                    <tr>
+                        <th>订单号</th>
+                        <td><input id="sid" disabled="disabled" style="width:100%"></td>
+                        <th>订单状态</th>
+                        <td><input id="orderstatus" disabled="disabled" style="width:100%"></td>
+                        <th>创建时间</th>
+                        <td><input id="ordertime" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>托运方</th>
+                        <td><input id="sellername" disabled="disabled" style="width:100%"></td>
+                        <th>收货方</th>
+                        <td><input id="buyername" disabled="disabled" style="width:100%"></td>
+                        <th>承运方</th>
+                        <td><input id="corporationname" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>装货地点</th>
+                        <td><input id="loadaddr" disabled="disabled" style="width:100%"></td>
+                        <th>卸货地点</th>
+                        <td><input id="unloadaddr" disabled="disabled" style="width:100%"></td>
+                        <th>托运方手机</th>
+                        <td><input id="sellerphone" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>收货方手机</th>
+                        <td><input id="buyerphone" disabled="disabled" style="width:100%"></td>
+                        <th>预期装货时间</th>
+                        <td><input id="loaddateddl" disabled="disabled" style="width:100%"></td>
+                        <th>预期卸货时间</th>
+                        <td><input id="unloaddateddl" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>货物名称</th>
+                        <td><input id="productname" disabled="disabled" style="width:100%"></td>
+                        <th>货物编号</th>
+                        <td><input id="productsid" disabled="disabled" style="width:100%"></td>
+                        <th>货物类型</th>
+                        <td><input id="producttype" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>货物重量</th>
+                        <td><input id="productweight" disabled="disabled" style="width:100%"></td>
+                        <th>货物体积</th>
+                        <td><input id="productvol" disabled="disabled" style="width:100%"></td>
+                        <th>运输单价</th>
+                        <td><input id="price" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>车牌号</th>
+                        <td><input id="trucknumber" disabled="disabled" style="width:100%"></td>
+                        <th>驾驶员</th>
+                        <td><input id="drivername" disabled="disabled" style="width:100%"></td>
+                        <th>押运员</th>
+                        <td><input id="escortname" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>派发时间</th>
+                        <td><input id="distributetime" disabled="disabled" style="width:100%"></td>
+                        <th>装货时间</th>
+                        <td><input id="loadtime" disabled="disabled" style="width:100%"></td>
+                        <th>卸货时间</th>
+                        <td><input id="unloadtime" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>装货重量</th>
+                        <td><input id="loadweight" disabled="disabled" style="width:100%"></td>
+                        <th>折白重量</th>
+                        <td><input id="zbweight" disabled="disabled" style="width:100%"></td>
+                        <th>卸货重量</th>
+                        <td><input id="unloadweight" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>回场时间</th>
+                        <td><input id="returntime" disabled="disabled" style="width:100%"></td>
+                        <th>回场地点</th>
+                        <td><input id="returnaddr" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="manage_modal" tabindex="-1" role="dialog">
+    <div id = "modal_dig" class="modal-dialog" role="document" style="width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="float: left">任务调度</h4>
+            </div>
+            <div id="modal1">
+                <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                    <div id="diaodu_form">
+                        <div class="row" style="padding-top:5px">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width: 70px">拖车:</label>
+                                <select id="a_truck" name="trucksid" style="width: 120px;height: 23px">
+                                </select>
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width: 70px">驾驶员:</label>
+                                <select id="a_driver" name="driversid" style="width: 120px;height: 23px">
+                                </select>
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width: 70px">路线名称:</label>
+                                <select id="a_route" name="routesid" style="width: 120px;height: 23px">
+                                </select>
+                                <div style="clear: left;height: 5px"></div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width: 70px">挂车:</label>
+                                <select id="a_trailer" name="trailersid" style="width: 120px;height: 23px">
+                                </select>
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width: 70px">押运员:</label>
+                                <select id="a_escort" name="escortsid" style="width: 120px;height: 23px">
+                                </select>
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width: 70px">里程:</label>
+                                <input id="a_distance" name="distance" style="width: 120px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top:5px">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width: 70px">运输单价:</label>
+                                <input id="a_price" name="price" style="width: 120px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width: 70px">注意事项:</label>
+                                <textarea id="a_remark" name="remark" style="width: 240px;height:40px"></textarea>
+                                <div style="clear: left;height: 5px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px">
+                    <p style="float: left;color:red" id="diaodu_info"></p>
+                    <button id="diaodu" class="btn btn-primary">调度</button>
+                    <button id="to_anjian" class="btn btn-primary">安检</button>
+                </div>
+            </div>
+            <div id="modal2" style="display: none">
+                <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                    <table border="1px" style="width: 630px;margin:auto;">
+                        <tbody>
+                        <tr>
+                            <td align="center" colspan="2" style="background-color: #f1f5f7;color:#1e91ca;font-weight: bold;">车辆审核</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                道路运输证件齐全，在审核有效期内
+                            </td>
+                            <td>
+                                承运人责任险在有效期内
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                二级维护在有效期内
+                            </td>
+                            <td>
+                                罐式车辆罐体应在检验有效期内
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                车辆技术等级为一级
+                            </td>
+                            <td>
+                                车辆状况正常
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                道路运输证核定的经营范围与拟运货物相符
+                            </td>
+                            <td>
+                                整备质量是否与牵引车牵引总质量相匹配
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                车载卫星定位装置完好，工作正常
+                            </td>
+                            <td>
+                                道路危险货物安全卡与拟运货物相符
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                警示标志灯、牌齐全，符合标准
+                            </td>
+                            <td>
+                                已配备必要的安全防护设备
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="background-color: #f1f5f7;color:#1e91ca;font-weight: bold;">驾驶员审核</td>
+                            <td align="center" style="background-color: #f1f5f7;color:#1e91ca;font-weight: bold;">押运员审核</td>
+                        <tr>
+                        <tr>
+                            <td>
+                                从业资格证在有效期内
+                            </td>
+                            <td>
+                                从业资格证在有效期内
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                从业资格证诚信考核为合格
+                            </td>
+                            <td>
+                                从业资格证诚信考核为合格
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                聘用合同在有效期内
+                            </td>
+                            <td>
+                                聘用合同在有效期内
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                按期参加企业学习培训
+                            </td>
+                            <td>
+                                按期参加企业学习培训
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                机动车驾驶证在审验有效期内
+                            </td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px;padding-left: 35px">
+                    <p id="anjian_info" style="color: red;float: left"></p>
+                    <button id="reject" type="button" class="btn btn-default">未通过</button>
+                    <button id="pass" class="btn btn-primary">通过</button>
+                    <button id="_paifa" class="btn btn-primary">派发</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="anjian_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width: 700px;height: 486px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="float: left">任务调度</h4>
+            </div>
+            <div>
+                <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                    <table border="1px" style="width: 630px;margin:auto;">
+                        <tbody>
+                        <tr>
+                            <td align="center" colspan="2" style="background-color: #f1f5f7;color:#1e91ca;font-weight: bold;">车辆审核</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                道路运输证件齐全，在审核有效期内
+                            </td>
+                            <td>
+                                承运人责任险在有效期内
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                二级维护在有效期内
+                            </td>
+                            <td>
+                                罐式车辆罐体应在检验有效期内
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                车辆技术等级为一级
+                            </td>
+                            <td>
+                                车辆状况正常
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                道路运输证核定的经营范围与拟运货物相符
+                            </td>
+                            <td>
+                                整备质量是否与牵引车牵引总质量相匹配
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                车载卫星定位装置完好，工作正常
+                            </td>
+                            <td>
+                                道路危险货物安全卡与拟运货物相符
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                警示标志灯、牌齐全，符合标准
+                            </td>
+                            <td>
+                                已配备必要的安全防护设备
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="background-color: #f1f5f7;color:#1e91ca;font-weight: bold;">驾驶员审核</td>
+                            <td align="center" style="background-color: #f1f5f7;color:#1e91ca;font-weight: bold;">押运员审核</td>
+                        <tr>
+                        <tr>
+                            <td>
+                                从业资格证在有效期内
+                            </td>
+                            <td>
+                                从业资格证在有效期内
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                从业资格证诚信考核为合格
+                            </td>
+                            <td>
+                                从业资格证诚信考核为合格
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                聘用合同在有效期内
+                            </td>
+                            <td>
+                                聘用合同在有效期内
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                按期参加企业学习培训
+                            </td>
+                            <td>
+                                按期参加企业学习培训
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                机动车驾驶证在审验有效期内
+                            </td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px;padding-left: 35px">
+                    <p id="anjian_info2" style="color: red;float: left"></p>
+                    <button id="reject2" type="button" class="btn btn-default">未通过</button>
+                    <button id="pass2" class="btn btn-primary">通过</button>
+                    <button id="paifa2" class="btn btn-primary">派发</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="paifa_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width: 350px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="float: left">任务派发</h4>
+            </div>
+            <div class="modal-body" style="width:350px;padding-top: 5px; padding-bottom: 5px;height: 70px;text-align: center">
+                <p id="ordersid" style="width: 200px;margin: 0 auto"></p>
+                <div style="clear: both"></div>
+                <button class="btn btn-default" style="float: left;margin-left: 100px" data-dismiss="modal">取消</button>
+                <label style="width: 20px;float: left"></label>
+                <button id="paifa" class="btn btn-primary" style="float: left">派发</button>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 0px;margin-top: 5px;height: 30px;text-align: center">
+                <p id="paifa_info" style="color: red;width: 170px;margin: 0 auto"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="trcuklog_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width: 700px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">行车日志</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <div id="trucklog_form">
+                    <div class="row" style="width: 700px;position: relative;top:5px">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;width:90px">车牌号:</label>
+                            <input name="trucknumber" disabled="disabled" style="width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:90px">油量:</label>
+                            <input name="fuelvol" disabled="disabled" style="width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:90px">右胎胎压:</label>
+                            <input name="righttirepressure" disabled="disabled" style="width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:90px">安全锁1:</label>
+                            <input name="lock1" disabled="disabled" style="width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:90px">安全锁3:</label>
+                            <input name="lock3" disabled="disabled" style="width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:90px">地理位置:</label>
+                            <input name="gps" disabled="disabled" style="width: 200px;height: 23px">
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;width:90px">行驶里程:</label>
+                            <input name="distance" disabled="disabled" style="width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:90px">车速:</label>
+                            <input name="speed" disabled="disabled" style="width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:90px">左胎胎压:</label>
+                            <input name="lefttirepressure" disabled="disabled" style="width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:90px">安全锁2:</label>
+                            <input name="lock2" disabled="disabled" style="width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:90px">安全锁4:</label>
+                            <input name="lock4" disabled="disabled" style="width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:90px">安全锁5:</label>
+                            <input name="lock5" disabled="disabled" style="width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 10px;margin-top: 5px">
+                <p style="float: left;color:red" id="carinfo_info"></p>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<body>
+<div style="height: 45px; background-color: #0f88eb">
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 7px">
+        <a class="dropdown-toggle icon-user icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right">
+            <li style="border-bottom: 1px solid #e0e0e0"><a href="userinfo_admin.html">用户信息</a></li>
+            <li><a href="login.html">注销</a></li>
+        </ul>
+    </li>
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 15px">
+        <a class="dropdown-toggle icon-envelope icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right" style="width:200px;">
+            <li style="border-bottom: 1px solid #e0e0e0;height: 30px"><a id="note1"></a></li>
+        </ul>
+    </li>
+    <div class="circle" style="float: right;text-align: center;position: relative;left: 10px"><span id="num" style="color: white;font-weight: 600">0</span></div>
+</div>
+
+<div class="container1" style="position: absolute;top:45px;width:99%">
+    <div style="height: 10px"></div>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <embed type="text/html" src="cy_catalog.html" style="width: 100%;height: 600px"/>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+            <div class="row" style="height: 4px">
+                <h3 class="title" style="background-image:url(../img/title.png);float: left">订单派发</h3>
+            </div>
+            <div class="row box" style="padding-bottom: 0;">
+                <div style="clear: both"></div>
+                <div id="searchform" class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <label style="width: 90px">托运方：</label>
+                        <select id="s_sellersid" name="sellersid" class="input_1"></select>
+                        <div style="height: 10px"></div>
+                        <label style="width: 90px">收货方：</label>
+                        <select id="s_buyersid" name="buyersid" class="input_1"></select>
+                        <div style="height: 10px"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <label style="width: 90px">订单号：</label>
+                        <input name="sid" class="input_1">
+                        <div style="height: 10px"></div>
+                        <label style="width: 90px">订单状态：</label>
+                        <select name="orderstatus" class="input_1">
+                            <option value="-1"></option>
+                            <option value="0">已下单</option>
+                            <option value="1">已调度</option>
+                            <option value="2">已安检</option>
+                            <option value="3">已派发</option>
+                            <option value="4">已接单</option>
+                            <option value="5">已装货</option>
+                            <option value="6">已卸货</option>
+                            <option value="7">已回场</option>
+                            <option value="9">一审通过</option>
+                            <option value="10">二审通过</option>
+                            <option value="11">三审通过</option>
+                            <option value="12">四审通过</option>
+                            <option value="13">审核失败</option>
+                        </select>
+                        <div style="height: 10px"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <label style="width: 90px">货物名称：</label>
+                        <select id="s_product" name="product" class="input_1"></select>
+                        <div style="height: 10px"></div>
+                        <label style="width: 90px">货物类型：</label>
+                        <select name="producttype" class="input_1">
+                            <option value="-1"></option>
+                            <option value="1">1类</option>
+                            <option value="2">2类</option>
+                            <option value="3">3类</option>
+                            <option value="4">4类</option>
+                            <option value="5">5类</option>
+                            <option value="6">6类</option>
+                            <option value="7">7类</option>
+                            <option value="8">8类</option>
+                        </select>
+                        <div style="height: 10px"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <label style="width: 90px">装货地址：</label>
+                        <input name="loadaddr" class="input_1">
+                        <div style="height: 10px"></div>
+                        <label style="width: 90px">卸货地址：</label>
+                        <input name="unloadaddr" class="input_1">
+                        <div style="height: 10px"></div>
+                    </div>
+                </div>
+                <div id="searchform2" class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <label style="width: 90px">创建日期：</label>
+                        <input id="min" class="input_1 day">
+                        <label style="width: 20px;text-align: center">到</label>
+                        <input id="max" class="input_1 day">
+                        <button id="search" class="btn1 btn btn-primary">查询</button>
+                        <div style="height: 10px"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row box">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding :0px">
+                    <div class="btn-group" style="position: relative;float: left">
+                        <button class="btn btn-default" id = "btn_chakan">订单查看</button>
+                        <button class="btn btn-default" id = "btn_trucklog">行车日志</button>
+                        <button class="btn btn-default" id = "btn_manage">调度</button>
+                        <button class="btn btn-default" id = "btn_anjian">安检</button>
+                        <button class="btn btn-default" id = "btn_paifa">派发</button>
+                    </div>
+                    <div style="clear: both"></div>
+                    <h4 class="table_title" style="margin:0;">订单记录</h4>
+                    <div>
+                        <table id="table1" style="overflow-x: scroll"></table>
+                    </div>
+                    <div style="margin-top: 5px;">
+                        <div style="margin: 0 auto;float: left" id="page1"></div>
+                        <span id="total" style="float: left;color: #428bca;padding-top: 6px;font-size: 15px;margin-left: 5px">共1页</span>
+                        <input id="index" style="float: left;margin-left:5px;border: 1px solid #dddddd;width: 60px;height: 35px;">
+                        <button id="to" class="btn btn-primary" style="float: left;margin-left: 5px">跳转</button>
+                        <select style="float: left;margin-left: 5px;height: 35px;width: 50px" onchange="change(this)">
+                            <option value="5">5</option>
+                            <option value="10" selected = "selected">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

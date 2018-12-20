@@ -1,0 +1,1 @@
+export default Object.freeze([{ key: 'accountStatus', label: '记账状态', type: 'select', options: { 0: '未入账', 1: '已入账'}, },])

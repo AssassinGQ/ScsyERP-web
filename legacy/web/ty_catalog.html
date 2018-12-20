@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../commom/jquery211.min.js"></script>
+    <script type="text/javascript" src="../commom/bootstrap.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/catalog.css">
+    <script>
+        function setCookie(name,value) {
+            document.cookie = name + "="+ escape (value);
+        }
+        function getCookie(name) {
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+            if(arr=document.cookie.match(reg)) return unescape(arr[2]);
+            else return null;
+        }
+        $(document).ready(function() {
+            $('a').click(function () {
+                var id = this.parentNode.id;
+                setCookie("cur_page",id);
+                top.location.href = this.href;
+            });
+            var cur_page = getCookie("cur_page");
+            if(cur_page != null){
+                var page = document.getElementById(cur_page);
+                $(page).addClass("active");
+                $(page.parentNode).addClass("in");
+            }
+        });
+    </script>
+</head>
+<body style="background-color: transparent;margin-top: 2px">
+<div class="panel-group" id="catalog">
+    <div class="panel panel-default" style="margin-top: 0">
+        <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#info">基本信息</div>
+        <ul id="info" class="nav nav-list collapse">
+            <li id="userinfo"><a href="ty_userinfo.html">用户信息</a></li>
+        </ul>
+    </div>
+    <div class="panel panel-default" style="margin-top: 0">
+    <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#yundan">电子运单</div>
+    <ul id="yundan" class="nav nav-list collapse">
+        <li id="xiadan"><a href="ty_xiadan.html">下达订单</a></li>
+        <li id="chaxun"><a href="ty_order.html">查询订单</a></li>
+        <li id="stats"><a href="ty_orderstatis.html">订单统计</a></li>
+    </ul>
+</div>
+</div>
+</body>
+</html>

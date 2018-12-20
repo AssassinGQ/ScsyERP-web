@@ -1,0 +1,392 @@
+<head>
+    <meta charset="UTF-8">
+    <title>订单统计</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="../commom/bootstrap-paginator.js"></script>
+    <script src="../commom/echarts.min.js"></script>
+    <script src="../commom/bootstrap-select.min.js"></script>
+    <script src="../commom/defaults-zh_CN.min.js"></script>
+    <script src="../commom/bootstrap-table.js"></script>
+    <script src="../commom/bootstrap-table-zh-CN.js"></script>
+    <script src="../commom/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script src="../commom/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script src="../commom/cy_common.js"></script>
+    <script src="../commom/statis.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-table.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="../css/maincss.css">
+    <script src="../js/order_statis.js"></script>
+</head>
+
+<div class="modal fade" id="check_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 930px">
+            <div class="modal-header">
+                <h4 class="modal-title">查看信息</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <table id="detail_table" class="input_table">
+                    <colgroup>
+                        <col style="width:120px">
+                        <col style="width:190px">
+                        <col style="width:120px">
+                        <col style="width:190px">
+                        <col style="width:120px">
+                        <col style="width:190px">
+                    </colgroup>
+                    <tr>
+                        <th>订单号</th>
+                        <td><input id="sid" disabled="disabled" style="width:100%"></td>
+                        <th>订单状态</th>
+                        <td><input id="orderstatus" disabled="disabled" style="width:100%"></td>
+                        <th>创建时间</th>
+                        <td><input id="ordertime" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>托运方</th>
+                        <td><input id="sellername" disabled="disabled" style="width:100%"></td>
+                        <th>收货方</th>
+                        <td><input id="buyername" disabled="disabled" style="width:100%"></td>
+                        <th>承运方</th>
+                        <td><input id="corporationname" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>装货地点</th>
+                        <td><input id="loadaddr" disabled="disabled" style="width:100%"></td>
+                        <th>卸货地点</th>
+                        <td><input id="unloadaddr" disabled="disabled" style="width:100%"></td>
+                        <th>托运方手机</th>
+                        <td><input id="sellerphone" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>收货方手机</th>
+                        <td><input id="buyerphone" disabled="disabled" style="width:100%"></td>
+                        <th>预期装货时间</th>
+                        <td><input id="loaddateddl" disabled="disabled" style="width:100%"></td>
+                        <th>预期卸货时间</th>
+                        <td><input id="unloaddateddl" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>货物名称</th>
+                        <td><input id="productname" disabled="disabled" style="width:100%"></td>
+                        <th>货物编号</th>
+                        <td><input id="productsid" disabled="disabled" style="width:100%"></td>
+                        <th>货物类型</th>
+                        <td><input id="producttype" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>货物重量</th>
+                        <td><input id="productweight" disabled="disabled" style="width:100%"></td>
+                        <th>货物体积</th>
+                        <td><input id="productvol" disabled="disabled" style="width:100%"></td>
+                        <th>运输单价</th>
+                        <td><input id="price" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>车牌号</th>
+                        <td><input id="trucknumber" disabled="disabled" style="width:100%"></td>
+                        <th>驾驶员</th>
+                        <td><input id="drivername" disabled="disabled" style="width:100%"></td>
+                        <th>押运员</th>
+                        <td><input id="escortname" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>派发时间</th>
+                        <td><input id="distributetime" disabled="disabled" style="width:100%"></td>
+                        <th>装货时间</th>
+                        <td><input id="loadtime" disabled="disabled" style="width:100%"></td>
+                        <th>卸货时间</th>
+                        <td><input id="unloadtime" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>装货重量</th>
+                        <td><input id="loadweight" disabled="disabled" style="width:100%"></td>
+                        <th>折白重量</th>
+                        <td><input id="zbweight" disabled="disabled" style="width:100%"></td>
+                        <th>卸货重量</th>
+                        <td><input id="unloadweight" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>回场时间</th>
+                        <td><input id="returntime" disabled="disabled" style="width:100%"></td>
+                        <th>回场地点</th>
+                        <td><input id="returnaddr" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<body>
+<div style="height: 45px; background-color: #0f88eb">
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 7px">
+        <a class="dropdown-toggle icon-user icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right">
+            <li style="border-bottom: 1px solid #e0e0e0"><a href="userinfo_admin.html">用户信息</a></li>
+            <li><a href="login.html">注销</a></li>
+        </ul>
+    </li>
+</div>
+
+<div class="container1" style="position: absolute;top:45px;width: 99%">
+    <div style="height: 10px"></div>
+    <div class="row" style="height: 487px">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="height: 485px">
+            <embed type="text/html" src="cy_catalog.html" style="width: 100%;height: 600px"/>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="height: 130px">
+            <div class="row" style="height: 4px">
+                <h3 class="title" style="background-image:url(../img/title.png);float: left">订单统计</h3>
+            </div>
+            <div class="row box" style="padding-bottom: 0px">
+                <div style="clear: both"></div>
+                <ul class="nav nav-tabs" style="position: relative;top:-5px">
+                    <li class="active">
+                        <a href="#tab1" data-toggle="tab">按时间统计</a>
+                    </li>
+                    <li>
+                        <a href="#tab2" data-toggle="tab">按条目统计</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                    <div id="searchform" class="row box" style="padding-bottom: 0;">
+                        <div style="clear: both;"></div>
+                        <div style="float: left">
+                            <label style="float: left;padding-right: 10px;width: 80px">年份:</label>
+                            <select id='year' class="selectpicker show-tick" multiple="multiple" data-width="150px">
+                                <option value="2017">2017年</option><option value="2018">2018年</option>
+                                <option value="2019">2019年</option><option value="2020">2020年</option>
+                                <option value="2021">2021年</option><option value="2022">2022年</option>
+                                <option value="2023">2023年</option><option value="2024">2024年</option>
+                                <option value="2025">2025年</option><option value="2026">2026年</option>
+                                <option value="2027">2027年</option><option value="2028">2028年</option>
+                                <option value="2029">2029年</option><option value="2030">2030年</option>
+                            </select>
+                        </div>
+                        <label style="float: left;width: 50px"></label>
+                        <div style="float: left">
+                            <label style="float: left;padding-right: 10px;width: 75px">月份:</label>
+                            <select id='month' class="selectpicker show-tick" multiple="multiple" data-width="150px" style="float: left">
+                                <option value="-1">缺省</option><option value="1">1月</option>
+                                <option value="2">2月</option><option value="3">3月</option>
+                                <option value="4">4月</option><option value="5">5月</option>
+                                <option value="6">6月</option><option value="7">7月</option>
+                                <option value="8">8月</option><option value="9">9月</option>
+                                <option value="10">10月</option><option value="11">11月</option>
+                                <option value="12">12月</option>
+                            </select>
+                            <button class="btn1 btn btn-primary" id="search1" style="height:28px;margin-left: 10px;">查询</button>
+                        </div>
+
+                        <a data-toggle="collapse" data-target="#condition" style="float: right">筛选条件</a>
+                        <div id="condition" class="collapse in" style="clear: both;padding: 5px 0 5px 0">
+                            <div id="type" style="float: left">
+                                <label style="width: 75px">统计类型:</label>
+                                <select id='objecttype' class="selectpicker show-tick" data-width="150px">
+                                    <option value="2">按驾驶员统计</option>
+                                    <option value="3">按托运方统计</option>
+                                    <option value="4">按车辆统计</option>
+                                </select>
+                                <div style="clear: both;height: 10px"></div>
+                            </div>
+                            <label style="width: 50px;float: left"></label>
+                            <div id="driver" style="float: left">
+                                <label style="width: 72px">驾驶员:</label>
+                                <select id='driversid' class="selectpicker show-tick" data-width="150px" multiple="multiple" data-live-search="true">
+                                    <option value="-1">缺省</option>
+                                </select>
+                            </div>
+                            <div id="seller" style="float: left;display: none">
+                                <label style="width: 72px">托运方:</label>
+                                <select id='sellersid' class="selectpicker show-tick" data-width="150px" multiple="multiple" data-live-search="true">
+                                    <option value="-1">缺省</option>
+                                </select>
+                            </div>
+                            <div id="truckId" style="float: left;display: none">
+                                <label style="width: 72px">车辆:</label>
+                                <select id='trucksid' class="selectpicker show-tick" data-width="150px" multiple="multiple" data-live-search="true">
+                                    <option value="-1">缺省</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row box">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding :0">
+                            <!--
+                            <ul class="nav nav-tabs" style="border-bottom: 1px solid #cccccc">
+                                <li class="active">
+                                    <a href="#data" data-toggle="tab">数据显示</a>
+                                </li>
+                                <li>
+                                    <a href="#chart" data-toggle="tab">图表显示</a>
+                                </li>
+                            </ul>
+                            -->
+                            <div style="clear: both;height: 10px"></div>
+                            <div id="panel" class="tab-content">
+                                <div class="row box tab-pane active" id="data" style="padding-top: 0">
+                                    <h4 class="table_title" style="margin:0;">订单统计</h4>
+                                    <div>
+                                        <table id="table1" style="overflow-x: scroll"></table>
+                                    </div>
+                                    <div style="margin-top: 5px;">
+                                        <div style="margin: 0 auto;float: left" id="page1"></div>
+                                        <span id="total" style="float: left;color: #428bca;padding-top: 6px;font-size: 15px;margin-left: 5px">共1页</span>
+                                        <input id="index" style="float: left;margin-left:5px;border: 1px solid #dddddd;width: 60px;height: 35px;">
+                                        <button id="to" class="btn btn-primary" style="float: left;margin-left: 5px">跳转</button>
+                                        <select style="float: left;margin-left: 5px;height: 35px;width: 50px" onchange="change(this)">
+                                            <option value="5">5</option>
+                                            <option value="10" selected = "selected">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row box tab-pane" id="chart" style="padding-top: 0;height: 290px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row box">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div id="total_chart" style="width: 100%;height: 300px"></div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div id="output_chart" style="width: 100%;height: 300px"></div>
+                        </div>
+                    </div>
+                    <div class="row box">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div id="mile_chart" style="width: 100%;height: 300px"></div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div id="fuel_chart" style="width: 100%;height: 300px"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab2">
+                    <div id="_searchform" class="row box" style="padding-bottom: 0;">
+                        <div style="clear: both;"></div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <label style="width: 75px">托运方:</label>
+                            <input name="sellername" style="width: 150px;height: 23px">
+                            <div style="height: 10px"></div>
+                            <label style="width: 75px">驾驶员:</label>
+                            <input name="drivername" style="width: 150px;height: 23px">
+                            <div style="height: 10px"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <label style="width: 75px">收货方:</label>
+                            <input name="buyername" style="width: 150px;height: 23px">
+                            <div style="height: 10px"></div>
+                            <label style="width: 75px">货物名:</label>
+                            <input name="productname" style="width: 150px;height: 23px">
+                            <div style="height: 10px"></div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <label style="width: 75px">车牌号:</label>
+                            <input name="trucknumber" style="width: 150px;height: 23px">
+                            <div style="height: 10px"></div>
+                            <label style="width: 75px">货物类别:</label>
+                            <select name="producttype" style="width: 150px;height: 23px">
+                                <option value="-1">缺省</option>
+                                <option value="1">1类</option>
+                                <option value="2">2类</option>
+                                <option value="3">3类</option>
+                                <option value="4">4类</option>
+                                <option value="5">5类</option>
+                                <option value="6">6类</option>
+                                <option value="7">7类</option>
+                                <option value="8">8类</option>
+                            </select>
+                            <div style="height: 10px"></div>
+                        </div>
+                        <div style="clear: both"></div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <label style="width: 75px">订单状态:</label>
+                            <select name="orderstatus" style="width: 150px;height: 23px">
+                                <option value="-1">缺省</option>
+                                <option value="0">已下单</option>
+                                <option value="1">已调度</option>
+                                <option value="2">已安检</option>
+                                <option value="3">已派发</option>
+                                <option value="4">已接单</option>
+                                <option value="5">已装货</option>
+                                <option value="6">已卸货</option>
+                                <option value="7">已回场</option>
+                                <option value="9">一审通过</option>
+                                <option value="10">二审通过</option>
+                                <option value="11">三审通过</option>
+                                <option value="12">四审通过</option>
+                                <option value="13">审核失败</option>
+                            </select>
+                            <div style="height: 10px"></div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <label style="width: 75px">创建时间:</label>
+                            <input id="min" style="width: 150px;height: 23px" class="riqi">
+                            <label>到</label>
+                            <input id="max" style="width: 150px;height: 23px" class="riqi">
+                            <button id="_search" class="btn1 btn btn-primary">查询</button>
+                            <div style="height: 10px"></div>
+                        </div>
+                    </div>
+                    <div id="_statis" class="row box" style="padding-bottom: 0">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <label style="font-size: 16px;float: left">订单总数:</label><p id="orderamount" style="font-size: 16px;float: left">0</p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <label style="font-size: 16px;float: left">里程数:</label><p id="distance" style="font-size: 16px;float: left">0</p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <label style="font-size: 16px;float: left">耗油量:</label><p id="fuelused" style="font-size: 16px;float: left">0</p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+                            <label style="font-size: 16px;float: left">产值:</label><p id="output" style="font-size: 16px;float: left">0</p>
+                        </div>
+                    </div>
+                    <div id="_panel" class="row box">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="btn-group" style="position: relative;float: left">
+                                <button class="btn btn-default" id = "btn_chakan">订单查看</button>
+                                <button class="btn btn-default" id = "btn_statis">统计</button>
+                            </div>
+                            <div style="clear: both"></div>
+                            <h4 class="table_title" style="margin:0;">订单记录</h4>
+                            <div style="overflow-x: scroll">
+                                <table id="_table1" width="100%"></table>
+                            </div>
+                            <div style="margin-top: 5px;">
+                                <div style="margin: 0 auto;float: left" id="_page1"></div>
+                                <span id="_total" style="float: left;color: #428bca;padding-top: 6px;font-size: 15px;margin-left: 5px">共1页</span>
+                                <input id="_index" style="float: left;margin-left:5px;border: 1px solid #dddddd;width: 60px;height: 35px;">
+                                <button id="_to" class="btn btn-primary" style="float: left;margin-left: 5px">跳转</button>
+                                <select style="float: left;margin-left: 5px;height: 35px;width: 50px" onchange="_change(this)">
+                                    <option value="5">5</option>
+                                    <option value="10" selected = "selected">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

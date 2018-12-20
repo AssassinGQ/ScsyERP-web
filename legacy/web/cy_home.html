@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="../commom/bootstrap-paginator.js"></script>
+    <!--<script src="../commom/echarts.min.js"></script> -->
+    <script src="../commom/bootstrap-select.min.js"></script>
+    <script src="../commom/defaults-zh_CN.min.js"></script>
+    <script src="../commom/bootstrap-table.js"></script>
+    <script src="../commom/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script src="../commom/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script src="../commom/cy_common.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-table.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="../css/maincss.css">
+    <script src="../js/cy_reads.js"></script>
+</head>
+
+
+<body>
+<div style="height: 45px; background-color: #0f88eb">
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 7px">
+        <a class="dropdown-toggle icon-user icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right">
+            <li style="border-bottom: 1px solid #e0e0e0"><a href="userinfo_admin.html">用户信息</a></li>
+            <li><a href="login.html">注销</a></li>
+        </ul>
+    </li>
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 15px">
+        <a class="dropdown-toggle icon-envelope icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right" style="width:200px;">
+            <li style="border-bottom: 1px solid #e0e0e0;height: 30px"><a id="note1"></a></li>
+        </ul>
+    </li>
+    <div class="circle" style="float: right;text-align: center;position: relative;left: 10px"><span id="ddl_num" style="color: white;font-weight: 600">0</span></div>
+</div>
+
+<div class="container1" style="position: absolute;top:45px;width:99%">
+    <div style="height: 10px"></div>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <embed type="text/html" src="cy_catalog.html" style="width: 100%;height: 600px"/>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+            <div class="row" style="height: 4px">
+                <h3 class="title" style="background-image:url(../img/title.png);float: left">首页</h3>
+            </div>
+
+            <div class="row box">
+                <div style="height: 5px;clear: both"></div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding :0px">
+                   <button class="btn-primary" style="width: 130px;height: 140px" onclick="window.location.href='cy_order.html'">
+                       <img src="../img/order.png" style="width: 100%;height: 100%">
+                   </button>
+                    <div style="height: 5px"></div>
+                    <label style="position: relative;left:35px">订单查询</label>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding :0px">
+                    <button class="btn-primary" style="width: 130px;height: 140px" onclick="window.location.href='cy_fee.html'">
+                        <img src="../img/fee.png" style="width: 100%;height: 100%">
+                    </button>
+                    <div style="height: 5px"></div>
+                    <label style="position: relative;left:35px">费用审批</label>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding :0px">
+                    <button class="btn-primary" style="width: 130px;height: 140px" onclick="window.location.href='cy_accidentquery.html'">
+                        <img src="../img/alarm.png" style="width: 100%;height: 100%">
+                    </button>
+                    <div style="height: 5px"></div>
+                    <label style="position: relative;left:35px">异常查询</label>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding :0px">
+                    <button class="btn-primary" style="width: 130px;height: 140px;" onclick="window.location.href='cy_trucklog.html'">
+                        <img src="../img/truckId.png" style="width: 100%;height: 100%">
+                    </button>
+                    <div style="height: 5px"></div>
+                    <label style="position: relative;left:35px">出行车辆</label>
+                </div>
+            </div>
+
+            <div class="row box">
+                <div style="height: 5px;clear: both"></div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding :0px">
+                    <button class="btn-primary" style="width: 130px;height: 140px;" onclick="window.location.href='cy_accidentstatis.html'">
+                        <img src="../img/tj1.png" style="width: 100%;height: 100%">
+                    </button>
+                    <div style="height: 5px"></div>
+                    <label style="position: relative;left:35px">事故统计</label>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding :0px">
+                    <button class="btn-primary" style="width: 130px;height: 140px;" onclick="window.location.href='cy_orderstatis.html'">
+                        <img src="../img/tj2.png" style="width: 100%;height: 100%">
+                    </button>
+                    <div style="height: 5px"></div>
+                    <label style="position: relative;left:35px">订单统计</label>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding :0px">
+                    <button class="btn-primary" style="width: 130px;height: 140px;" onclick="window.location.href='cy_lock.html'">
+                        <img src="../img/lock.png" style="width: 100%;height: 100%">
+                    </button>
+                    <div style="height: 5px"></div>
+                    <label style="position: relative;left:35px">远程开锁</label>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding :0px">
+                    <button class="btn-primary" style="width: 130px;height: 140px;" onclick="window.location.href='cy_repair.html'">
+                        <img src="../img/repair.png" style="width: 100%;height: 100%">
+                    </button>
+                    <div style="height: 5px"></div>
+                    <label style="position: relative;left:35px">维修记录</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

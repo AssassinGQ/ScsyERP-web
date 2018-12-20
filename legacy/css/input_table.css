@@ -1,0 +1,30 @@
+.input_table{
+    border:1px solid #5F6F7E;
+    border-collapse:collapse;
+    font-family:Arial;
+}
+.input_table caption{       /*标题*/
+    text-align:left;
+    padding-bottom:6px;
+}
+.input_table th{           /*行列标题*/
+    border:1px solid #5F6F7E;
+    background-color:#E2E2E2;
+    color:#000000;
+    text-align:left;
+    font-weight:normal;
+    padding:2px 8px 2px 6px;
+    margin:0px;
+}
+.input_table td{         /*表格行*/
+    margin:0px;
+    padding:0px;
+    border:1px solid #ABABAB;   /* 单元格边框 */
+}
+.input_table input{          /*可输入区域样式*/
+    width:100px;
+    padding:1px 3px 1px 3px;
+    margin:0px;
+    border:none;                /* 输入框不要边框 */
+    font-family:Arial;
+}

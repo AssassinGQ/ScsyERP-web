@@ -1,0 +1,66 @@
+.item{
+    margin-bottom: 10px;
+    padding: 0 20px 10px 20px;
+    background: #fff;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-height: 426px;
+}
+
+.item_title{
+    margin-top: 0;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px dashed #ddd;
+    position: relative;
+}
+
+.item_form{
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.item_label{
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 2px;
+    color: #777;
+}
+
+.item_input{
+    border-bottom: 1px solid #D0D0D0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    width:290px;
+    font-size: 15px;
+    color: #666;
+}
+
+.item_select{
+    width:290px;
+    height: 25px;
+    font-size: 15px;
+    border-bottom: 1px solid #D0D0D0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    color: #666;
+}
+
+.btn_submit{
+    background: #0f88eb;
+    box-shadow: none;
+    border: 0;
+    border-radius: 3px;
+    line-height: 41px;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Microsoft Yahei';
+    width: 300px;
+    height: 50px;
+}

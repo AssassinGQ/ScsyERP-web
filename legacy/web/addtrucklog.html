@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#btn1").click(function () {
+                var data = {};
+                data["distance"] = "29";
+                data["fuelvol"] = "2";
+                data["lock"] = "1-0-1-1-1";
+                data["battery"] = "56-23-34-12-34";
+                data["haswarn"] = 1;
+                data["warntype"] = 5;
+                data["righttiretemp"] = "22";
+                data["lefttiretemp"] = "22";
+                data["trucknumber"] = document.getElementById("trucknumber").value;
+                data["trucksid"] = "1";
+                data["time"] = new Date().getTime();
+                data["gpsx"] = "116.41667"; data["gpsy"] = "39.91667";
+                data["speed"] = "111";
+                data["lefttirepressure"] = "23";
+                data["righttirepressure"] = "34";
+                alert(data["battery"]);
+                $.ajax({
+                    url:"http://120.76.219.196:85/trucklogs/add_log",
+                    type:'post',
+                    dataType:'json',
+                    data:data,
+                    success:function (response) {
+                        alert(JSON.stringify(response))
+                    }
+
+                })
+            });
+        })
+    </script>
+</head>
+<body>
+<input id="trucknumber">
+<button id="btn1">确认</button>
+</body>
+</html>

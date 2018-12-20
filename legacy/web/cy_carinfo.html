@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>车辆档案</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="../commom/bootstrap-paginator.js"></script>
+    <!--<script src="../commom/echarts.min.js"></script> -->
+    <script src="../commom/bootstrap-select.min.js"></script>
+    <script src="../commom/defaults-zh_CN.min.js"></script>
+    <script src="../commom/bootstrap-table.js"></script>
+    <script src="../commom/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script src="../commom/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script src="../commom/cy_common.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-table.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="../css/maincss.css">
+    <script src="../js/cy_carinfo.js"></script>
+</head>
+
+<div class="modal fade" id="mend_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width: 900px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">修改信息</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <div id="mend_form">
+                    <table id="detail_table" class="input_table">
+                        <colgroup>
+                            <col style="width:140px">
+                            <col style="width:160px">
+                            <col style="width:140px">
+                            <col style="width:160px">
+                            <col style="width:140px">
+                            <col style="width:160px">
+                        </colgroup>
+                        <tr>
+                            <th>车牌号</th>
+                            <td><input name="trucknumber" style="width:100%"></td>
+                            <th>联系人</th>
+                            <td><input name="manname" style="width:100%"></td>
+                            <th>联系方式</th>
+                            <td><input name="manphone" style="width:100%"></td>
+                        </tr>
+                        <tr>
+                            <th>道路运输证</th>
+                            <td><input name="dlyszh" style="width:100%"></td>
+                            <th>经营范围</th>
+                            <td><input name="jyfw" style="width:100%"></td>
+                            <th>车牌颜色</th>
+                            <td><input name="cpys" style="width:100%"></td>
+                        </tr>
+                        <tr>
+                            <th>运管机构</th>
+                            <td><input name="ygjg" style="width:100%"></td>
+                            <th>车型</th>
+                            <td><input name="cx" style="width:100%"></td></td>
+                            <th>车型分类</th>
+                            <td>
+                                <select name="cxfl" style="width:100%;height: 100%;border: 0">
+                                    <option value="-1"></option>
+                                    <option value="小型车">小型车</option>
+                                    <option value="中型车">中型车</option>
+                                    <option value="大型车">大型车</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>车辆类型</th>
+                            <td><input name="cllx" style="width:100%"></td>
+                            <th>车身颜色</th>
+                            <td><input name="csys" style="width:100%"></td>
+                            <th>技术等级</th>
+                            <td><input name="cljsdj" style="width:100%"></td>
+                        </tr>
+                        <tr>
+                            <th>底盘号</th>
+                            <td><input name="dph" style="width:100%"></td>
+                            <th>发动机号</th>
+                            <td><input name="fdjh" style="width:100%"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px">
+                <p style="float: left;color:red" id="mend_info"></p>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="mend" type="button" class="btn btn-primary">修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="period_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width: 700px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">设置检查周期</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <div id="period_form">
+                    <div class="row" style="width: 700px;position: relative;top:5px">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;padding-right: 5px">年审周期(天):</label>
+                            <input id="annualduration" style="width: 120px;height: 23px">
+                            <div style="clear: left;height: 5px"></div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;padding-right: 5px">二级维护周期(天):</label>
+                            <input id="secondduration" style="width: 120px;height: 23px">
+                            <div style="clear: left;height: 5px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px">
+                <p style="float: left;color:red" id="period_info"></p>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="period" type="button" class="btn btn-primary">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="nianshen_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 350px">
+            <div class="modal-header">
+                <h4 class="modal-title">年审时间录入</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px;">
+                <div id="nianshen_form">
+                    <div class="row" style="position: relative;top:5px">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label style="float:left;padding-right: 5px">本次年审时间:</label>
+                            <input id="lastannualtime" class="day" style="width: 120px;height: 23px">
+                            <div style="clear: left;height: 5px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px">
+                <p style="float: left;color:red" id="nianshen_info"></p>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="nianshen" type="button" class="btn btn-primary">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ershen_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width: 700px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">设置检查周期</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <div id="ershen_form">
+                    <div class="row" style="width: 700px;position: relative;top:5px">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;padding-right: 5px">二级审核时间:</label>
+                            <input id="lastsecondtime" class="day" style="width: 120px;height: 23px">
+                            <div style="clear: left;height: 5px"></div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;padding-right: 5px">二级审核内容:</label>
+                            <textarea id="lastsecondcontent" style="width: 220px;height: 45px"></textarea>
+                            <div style="clear: left;height: 5px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px">
+                <p style="float: left;color:red" id="ershen_info"></p>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="ershen" type="button" class="btn btn-primary">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<body>
+<div style="height: 45px; background-color: #0f88eb">
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 7px">
+        <a class="dropdown-toggle icon-user icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right">
+            <li style="border-bottom: 1px solid #e0e0e0"><a href="userinfo_admin.html">用户信息</a></li>
+            <li><a href="login.html">注销</a></li>
+        </ul>
+    </li>
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 15px">
+        <a class="dropdown-toggle icon-envelope icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right" style="width:200px;">
+            <li style="border-bottom: 1px solid #e0e0e0;height: 30px"><a id="note1"></a></li>
+            <li style="border-bottom: 1px solid #e0e0e0;height: 30px"><a id="note2"></a></li>
+        </ul>
+    </li>
+    <div class="circle" style="float: right;text-align: center;position: relative;left: 10px"><span id="ddl_num" style="color: white;font-weight: 600">0</span></div>
+</div>
+
+<div class="container1" style="position: absolute;top:45px;width:99%">
+    <div style="height: 10px"></div>
+    <div class="row" style="height: 487px">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="height: 485px">
+            <embed type="text/html" src="cy_catalog.html" style="width: 100%;height: 600px"/>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="height: 130px">
+            <div class="row" style="height: 4px">
+                <h3 class="title" style="background-image:url(../img/title.png);float: left">车辆档案</h3>
+            </div>
+            <div class="row box" style="padding-bottom: 0;">
+                <div style="clear: both"></div>
+                <div id="searchform" class="row" style="padding-bottom: 0;">
+                    <div style="clear: both;height:5px"></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <label style="width: 90px">车牌号：</label>
+                        <input type="text" name="trucknumber" class="input_1">
+                        <div style="height: 10px"></div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <label style="width: 90px">档案编号：</label>
+                        <input type="text" name="sid" class="input_1">
+                        <button class="btn1 btn btn-primary" type="submit" id="search" style="height:28px">查询</button>
+                        <div style="height: 10px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row box">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding :0px">
+                    <div class="btn-group" style="position: relative;float: left">
+                        <button class="btn btn-default" id = "btn_mend">修改</button>
+                        <button class="btn btn-default" id = "btn_period">设置周期</button>
+                        <button class="btn btn-default" id = "btn_nianshen">年审录入</button>
+                        <button class="btn btn-default" id = "btn_ershen">二级审核录入</button>
+                    </div>
+                    <div style="clear: both"></div>
+                    <h4 class="table_title" style="margin:0;">车辆档案</h4>
+                    <div style="width: 100%;">
+                        <table id="table1"></table>
+                    </div>
+                    <div style="margin-top: 5px;">
+                        <div style="margin: 0 auto;float: left" id="page1"></div>
+                        <span id="total" style="float: left;color: #428bca;padding-top: 6px;font-size: 15px;margin-left: 5px">共1页</span>
+                        <input id="index" style="float: left;margin-left:5px;border: 1px solid #dddddd;width: 60px;height: 35px;">
+                        <button id="to" class="btn btn-primary" style="float: left;margin-left: 5px">跳转</button>
+                        <select style="float: left;margin-left: 5px;height: 35px;width: 50px" onchange="change(this)">
+                            <option value="5">5</option>
+                            <option value="10" selected = "selected">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+

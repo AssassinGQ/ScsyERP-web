@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布订单</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="../commom/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script src="../commom/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/maincss.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link href="../css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/kehu_order.css">
+    <script src="../js/ty_xiadan.js"></script>
+</head>
+
+<body>
+<div style="height: 45px; background-color: #0f88eb">
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 7px">
+        <a class="dropdown-toggle icon-user icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right">
+            <li style="border-bottom: 1px solid #e0e0e0"><a href="ty_userinfo.html">用户信息</a></li>
+            <li><a href="login.html">注销</a></li>
+        </ul>
+    </li>
+</div>
+<div class="container1" style="position: absolute;top:45px;width: 99%">
+    <br>
+    <div class="row" style="height: 487px">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="height: 485px">
+            <embed type="text/html" src="ty_catalog.html" style="width: 100%;height: 600px"/>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="height: 130px">
+            <div class="row" id="order">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="item">
+                        <h4 class="item_title" style="color:#f60;">托运方</h4>
+                        <div class="item_form">
+                            <label class="item_label">公司名称</label>
+                            <br>
+                            <select id="seller" class="item_select"></select>
+                        </div>
+                        <!--
+                        <div class="item_form">
+                            <label class="item_label">省/市/区</label>
+                            <br>
+                            <input name="" id="tuo_area" autocomplete="on" type="text" class="proCityQueryAll proCitySelAll" style="width: 290px;border-top: 0 !important;border-left: 0 !important;border-right: 0 !important;border-bottom: 1px solid #D0D0D0 !important;font-size: 15px">
+                        </div>
+                        -->
+                        <div class="item_form">
+                            <label class="item_label">装货地址</label>
+                            <br>
+                            <input id="loadaddr" class="item_input">
+                        </div>
+                        <div class="item_form">
+                            <label class="item_label">装货日期</label>
+                            <br>
+                            <input id="loaddateddl" class="item_input riqi">
+                        </div>
+                        <div class="item_form">
+                            <label class="item_label">联系人</label>
+                            <br>
+                            <input id="sellerman" class="item_input">
+                        </div>
+                        <div class="item_form">
+                            <label class="item_label">手机</label>
+                            <br>
+                            <input id="sellerphone" class="item_input">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="item">
+                        <h4 class="item_title" style="color:#5cb85c;">收货方</h4>
+                        <div class="item_form">
+                            <label class="item_label">公司名称</label>
+                            <br>
+                            <select id="buyer" class="item_select"></select>
+                        </div>
+
+                        <div class="item_form">
+                            <label class="item_label">卸货地址</label>
+                            <br>
+                            <input id="unloadaddr" class="item_input">
+                        </div>
+                        <div class="item_form">
+                            <label class="item_label">卸货日期</label>
+                            <br>
+                            <input id="unloaddateddl" class="item_input riqi">
+                        </div>
+                        <div class="item_form">
+                            <label class="item_label">联系人</label>
+                            <br>
+                            <input id="buyerman" class="item_input">
+                        </div>
+                        <div class="item_form">
+                            <label class="item_label">手机</label>
+                            <br>
+                            <input id="buyerphone" class="item_input">
+                        </div>
+                        <!--
+                        <div class="item_form">
+                            <label class="item_label">省/市/区</label>
+                            <br>
+                            <input name="" id="shou_area" autocomplete="on" type="text" class="proCityQueryAll proCitySelAll" style="width: 290px;border-top: 0 !important;border-left: 0 !important;border-right: 0 !important;border-bottom: 1px solid #D0D0D0 !important;font-size: 15px">
+                        </div>
+                        -->
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="item">
+                        <h4 class="item_title">承运信息</h4>
+                        <div class="item_form">
+                            <label class="item_label">货物名称</label>
+                            <br>
+                            <select id="product" class="item_select"></select>
+                        </div>
+                        <div class="item_form">
+                            <label class="item_label">货物类型</label>
+                            <br>
+                            <select id="producttype" class="item_select">
+                                <option value="-1"></option>
+                                <option value="1">1类</option>
+                                <option value="2">2类</option>
+                                <option value="3">3类</option>
+                                <option value="4">4类</option>
+                                <option value="5">5类</option>
+                                <option value="6">6类</option>
+                                <option value="7">7类</option>
+                                <option value="8">8类</option>
+                            </select>
+                        </div>
+                        <div class="item_form" style="float: left">
+                            <label class="item_label">包装类型</label>
+                            <br>
+                            <select id="packettype" class="item_select">
+                                <option value="-1"></option>
+                                <option value="1">罐装</option>
+                                <option value="2">捆绑</option>
+                            </select>
+                        </div>
+                        <div style="clear: both"></div>
+                        <div class="item_form">
+                            <div style="float: left;width: 48%">
+                                <label class="item_label">重量（吨）</label>
+                                <br>
+                                <input id="productweight" class="item_input" style="width: 100%">
+                            </div>
+                            <div style="float: right;width: 48%">
+                                <label class="item_label">体积（m³）</label>
+                                <br>
+                                <input id="productvol" class="item_input" style="width: 100%">
+                            </div>
+                            <div style="clear: both"></div>
+                        </div>
+                        <div style="clear: both"></div>
+                        <div class="item_form">
+                            <label class="item_label">承运公司</label>
+                            <br>
+                            <select id="corporation"  class="item_select">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center">
+                    <div style="width:300px; margin: 0 auto">
+                        <button id="add" class="btn_submit" style="font-size: 20px;">提交订单</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(".riqi").
+    datetimepicker({
+        language:  'zh-CN',
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayBtn: true,
+        startView: 'month',
+        minView:'month',
+        maxView:'decade'
+    });
+</script>
+</body>
+</html>

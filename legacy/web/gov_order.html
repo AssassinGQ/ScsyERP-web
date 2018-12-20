@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>订单查询</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="../commom/bootstrap-paginator.js"></script>
+    <!--<script src="../commom/echarts.min.js"></script> -->
+    <script src="../commom/bootstrap-select.min.js"></script>
+    <script src="../commom/defaults-zh_CN.min.js"></script>
+    <script src="../commom/bootstrap-table.js"></script>
+    <script src="../commom/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script src="../commom/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script src="../commom/gov_common.js"></script>
+    <script src="../js/gov_order.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-table.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="../css/maincss.css">
+</head>
+
+<div class="modal fade" id="check_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 750px">
+            <div class="modal-header">
+                <h4 class="modal-title">查看信息</h4>
+            </div>
+            <form id="add_form" method="get">
+                <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                    <table id="detail_table" class="input_table">
+                        <colgroup>
+                            <col style="width:100px">
+                            <col style="width:140px">
+                            <col style="width:100px">
+                            <col style="width:140px">
+                            <col style="width:100px">
+                            <col style="width:140px">
+                        </colgroup>
+                        <tr>
+                            <th>订单号</th>
+                            <td><input id="sid" disabled="disabled" style="width:100%"></td>
+                            <th>订单状态</th>
+                            <td><input id="orderstatus" disabled="disabled" style="width:100%"></td>
+                            <th>创建时间</th>
+                            <td><input id="ordertime" disabled="disabled" style="width:100%"></td>
+                        </tr>
+                        <tr>
+                            <th>托运方</th>
+                            <td><input id="sellername" disabled="disabled" style="width:100%"></td>
+                            <th>收货方</th>
+                            <td><input id="buyername" disabled="disabled" style="width:100%"></td>
+                            <th>承运方</th>
+                            <td><input id="corporationname" disabled="disabled" style="width:100%"></td>
+                        </tr>
+                        <tr>
+                            <th>装货地点</th>
+                            <td><input id="loadaddr" disabled="disabled" style="width:100%"></td>
+                            <th>卸货地点</th>
+                            <td><input id="unloadaddr" disabled="disabled" style="width:100%"></td>
+                            <th>返回地点</th>
+                            <td><input style="width:100%"></td>
+                        </tr>
+                        <tr>
+                            <th>托运方手机</th>
+                            <td><input id="sellerphone" disabled="disabled" style="width:100%"></td>
+                            <th>收货方手机</th>
+                            <td><input id="buyerphone" disabled="disabled" style="width:100%"></td>
+                            <th>装货时间</th>
+                            <td><input id="loaddateddl" disabled="disabled" style="width:100%"></td>
+                        </tr>
+                        <tr>
+                            <th>卸货时间</th>
+                            <td><input id="unloaddateddl" disabled="disabled" style="width:100%"></td>
+                            <th>货物名称</th>
+                            <td><input id="productname" disabled="disabled" style="width:100%"></td>
+                            <th>货物类型</th>
+                            <td><input id="producttype" disabled="disabled" style="width:100%"></td>
+                        </tr>
+                        <tr>
+                            <th>包装规格</th>
+                            <td><input id="packettype" disabled="disabled" style="width:100%"></td>
+                            <th>货物重量</th>
+                            <td><input id="productweight" disabled="disabled" style="width:100%"></td>
+                            <th>货物体积</th>
+                            <td><input id="productvol" disabled="disabled" style="width:100%"></td>
+                        </tr>
+                        <tr>
+                            <th>车牌号</th>
+                            <td><input id="trucknumber" disabled="disabled" style="width:100%"></td>
+                            <th>驾驶员</th>
+                            <td><input id="drivername" disabled="disabled" style="width:100%"></td>
+                            <th>押运员</th>
+                            <td><input id="escortname" disabled="disabled" style="width:100%"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<body>
+<div style="height: 45px; background-color: #0f88eb">
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 7px">
+        <a class="dropdown-toggle icon-user icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right">
+            <li style="border-bottom: 1px solid #e0e0e0"><a href="gov_userinfo.html">用户名</a></li>
+            <li><a href="login.html">注销</a></li>
+        </ul>
+    </li>
+</div>
+
+<div class="container1" style="position: absolute;top:45px;width:99%">
+    <div style="height: 10px"></div>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <embed type="text/html" src="gov_catalog.html" style="width: 100%;height: 600px"/>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+            <div class="row" style="height: 4px">
+                <h3 class="title" style="background-image:url(../img/title.png);float: left">订单查询</h3>
+            </div>
+            <div class="row box" style="padding-bottom: 0;">
+                <div style="clear: both"></div>
+                <div id="searchform" class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <label style="width: 80px">承运方:</label>
+                        <select id='corporationsid' name="corporationsid" class="selectpicker show-tick" data-width="200px">
+                            <option value="-1">缺省</option>
+                        </select>
+                        <div style="height: 10px"></div>
+                        <label style="width: 80px">货物名称：</label>
+                        <input name="productname" style="width: 200px;height: 23px">
+                        <div style="height: 10px"></div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <label style="width: 80px">订单编号：</label>
+                        <input name="sid" style="width: 200px;height: 23px">
+                        <div style="height: 10px"></div>
+                        <label style="width: 80px">货物类型：</label>
+                        <select name="producttype" style="width: 200px;height: 23px">
+                            <option value="-1"></option>
+                            <option value="1">1类</option>
+                            <option value="2">2类</option>
+                            <option value="3">3类</option>
+                            <option value="4">4类</option>
+                            <option value="5">5类</option>
+                            <option value="6">6类</option>
+                            <option value="7">7类</option>
+                            <option value="8">8类</option>
+                        </select>
+                        <div style="height: 10px"></div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <label style="width: 80px">托运方：</label>
+                        <input name="sellername" style="width: 200px;height: 23px">
+                        <div style="height: 10px"></div>
+                        <label style="width: 80px">收货方：</label>
+                        <input name="buyername" style="width: 200px;height: 23px">
+                        <div style="height: 10px"></div>
+                    </div>
+                </div>
+                <div id="searchform2" class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label style="width: 80px">创建日期：</label>
+                        <input id="min" name="loaddate" class="day" style="width: 200px;height: 23px">
+                        <label style="width: 20px;text-align: center">到</label>
+                        <input id="max" name="loaddate" class="day" style="width: 200px;height: 23px">
+                        <button id="search" class="btn1 btn btn-primary">查询</button>
+                        <div style="height: 10px"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row box">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding :0px">
+                    <div class="btn-group" style="position: relative;float: left">
+                        <button class="btn btn-default" id = "btn_chakan">查看</button>
+                    </div>
+                    <div style="clear: both"></div>
+                    <h4 class="table_title" style="margin:0;">订单记录</h4>
+                    <div style="width: 100%;overflow-x: scroll">
+                        <table id="table1"></table>
+                    </div>
+                    <div style="margin-top: 5px;">
+                        <div style="margin: 0 auto;float: left" id="page1"></div>
+                        <span id="total" style="float: left;color: #428bca;padding-top: 6px;font-size: 15px;margin-left: 5px">共1页</span>
+                        <input id="index" style="float: left;margin-left:5px;border: 1px solid #dddddd;width: 60px;height: 35px;">
+                        <button id="to" class="btn btn-primary" style="float: left;margin-left: 5px">跳转</button>
+                        <select style="float: left;margin-left: 5px;height: 35px;width: 50px" onchange="change(this)">
+                            <option value="5">5</option>
+                            <option value="10" selected = "selected">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+

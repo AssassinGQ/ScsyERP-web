@@ -1,0 +1,12 @@
+.nav-tabs > li > a{
+    font-weight: 700;
+    color:#555;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: white;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    background-color: #0f88eb;
+}

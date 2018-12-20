@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>上传考题</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="../commom/bootstrap-paginator.js"></script>
+    <script src="../js/cy_paper.js"></script>
+    <!--<script src="../commom/echarts.min.js"></script> -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/maincss.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/paper.css">
+</head>
+
+
+<body>
+<div style="height: 45px; background-color: #0f88eb">
+    <li class="dropdown"
+        style="float: right;list-style-type:none; padding-top: 7px;padding-right: 7px">
+        <a class="dropdown-toggle icon-user icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right">
+            <li style="border-bottom: 1px solid #e0e0e0"><a href="userinfo_admin.html">用户信息</a></li>
+            <li><a href="login.html">注销</a></li>
+        </ul>
+    </li>
+</div>
+
+
+<div class="container1" style="position: absolute;top:45px;width: 99%">
+    <div style="height: 10px"></div>
+    <div class="row" style="height: 487px">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="height: 485px">
+            <embed type="text/html" src="cy_catalog.html" style="width: 100%;height: 600px"/>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="height: 130px">
+            <div class="row" style="height: 4px">
+                <h3 class="title" style="background-image:url(../img/title.png);float: left">上传考题</h3>
+            </div>
+            <div class="row box" style="padding-bottom: 0;">
+                <div style="clear: both"></div>
+                <h4 style="float: left;padding-right: 10px">考题名称：</h4>
+                <input id="title" style="float: left;margin-top:8px">
+                <div style="clear: both;"></div>
+                <div class="row box" style="padding-top: 0px">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding :0px">
+                        <div class="question" >
+                            <p>一</p>
+                            <textarea id="p2"></textarea>
+                            <div style="clear: both;height: 5px"></div>
+                            <label>A</label><input><br><label>B</label><input><br><label>C</label><input><br><label>D</label><input><br>
+                            <label>正确答案:</label>
+                            <select style="width: 70px">
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                        </div>
+
+                        <div class="question">
+                            <p>三</p>
+                            <textarea></textarea>
+                            <div style="clear: both;height: 5px"></div>
+                            <label>A</label><input><br><label>B</label><input><br><label>C</label><input><br><label>D</label><input><br>
+                            <label>正确答案:</label>
+                            <select style="width: 70px">
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                        </div>
+
+                        <div class="question">
+                            <p>五</p>
+                            <textarea></textarea>
+                            <div style="clear: both;height: 5px"></div>
+                            <label>A</label><input><br><label>B</label><input><br><label>C</label><input><br><label>D</label><input><br>
+                            <label>正确答案:</label>
+                            <select style="width: 70px">
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                        </div>
+
+                        <div class="question">
+                            <p>七</p>
+                            <textarea></textarea>
+                            <div style="clear: both;height: 5px"></div>
+                            <label>A</label><input><br><label>B</label><input><br><label>C</label><input><br><label>D</label><input><br>
+                            <label>正确答案:</label>
+                            <select style="width: 70px">
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                        </div>
+
+                        <div class="question">
+                            <p>九</p>
+                            <textarea></textarea>
+                            <div style="clear: both;height: 5px"></div>
+                            <label>A</label><input><br><label>B</label><input><br><label>C</label><input><br><label>D</label><input><br>
+                            <label>正确答案:</label>
+                            <select style="width: 70px">
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding :0px">
+                        <div class="question">
+                            <p>二</p>
+                            <textarea></textarea>
+                            <div style="clear: both;height: 5px"></div>
+                            <label>A</label><input><br><label>B</label><input><br><label>C</label><input><br><label>D</label><input><br>
+                            <label>正确答案:</label>
+                            <select style="width: 70px">
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                        </div>
+
+                        <div class="question">
+                            <p>四</p>
+                            <textarea></textarea>
+                            <div style="clear: both;height: 5px"></div>
+                            <label>A</label><input><br><label>B</label><input><br><label>C</label><input><br><label>D</label><input><br>
+                            <label>正确答案:</label>
+                            <select style="width: 70px">
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                        </div>
+
+                        <div class="question">
+                            <p>六</p>
+                            <textarea></textarea>
+                            <div style="clear: both;height: 5px"></div>
+                            <label>A</label><input><br><label>B</label><input><br><label>C</label><input><br><label>D</label><input><br>
+                            <label>正确答案:</label>
+                            <select style="width: 70px">
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                        </div>
+
+                        <div class="question">
+                            <p>八</p>
+                            <textarea></textarea>
+                            <div style="clear: both;height: 5px"></div>
+                            <label>A</label><input><br><label>B</label><input><br><label>C</label><input><br><label>D</label><input><br>
+                            <label>正确答案:</label>
+                            <select style="width: 70px">
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                        </div>
+
+                        <div class="question">
+                            <p>十</p>
+                            <textarea></textarea>
+                            <div style="clear: both;height: 5px"></div>
+                            <label>A</label><input><br><label>B</label><input><br><label>C</label><input><br><label>D</label><input><br>
+                            <label>正确答案:</label>
+                            <select style="width: 70px">
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row box answer" style="padding-top: 10px">
+                    <h5>答案:</h5>
+                    <label>1</label><input>
+                    <label>2</label><input>
+                    <label>3</label><input>
+                    <label>4</label><input>
+                    <label>5</label><input>
+                    <label>6</label><input>
+                    <label>7</label><input>
+                    <label>8</label><input>
+                    <label>9</label><input>
+                    <label>10</label><input>
+                </div>
+                <div class="row box" style="text-align: center">
+                    <button id="submit" class="btn-primary" style="margin: auto 0;height: 30px;width: 100px">上传</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

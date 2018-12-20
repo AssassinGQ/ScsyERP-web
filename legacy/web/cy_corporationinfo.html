@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>公司信息</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script type="text/javascript" src="../commom/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/cy_corporationinfo.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/maincss.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <style>
+        .btn_submit{
+            background: #0f88eb;
+            box-shadow: none;
+            border: 0;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 20px;
+            font-family: 'Microsoft Yahei';
+            width: 250px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+
+<body>
+<div style="height: 45px; background-color: #0f88eb">
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 7px">
+        <a class="dropdown-toggle icon-user icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right">
+            <li style="border-bottom: 1px solid #e0e0e0"><a href="userinfo_admin.html">公司信息</a></li>
+            <li><a href="login.html">注销</a></li>
+        </ul>
+    </li>
+</div>
+
+<div class="container1" style="position: absolute;top:45px;width: 99%">
+    <div style="height: 10px"></div>
+    <div class="row" style="height: 487px">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="height: 485px">
+            <embed type="text/html" src="cy_catalog.html" style="width: 100%;height: 600px"/>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="height: 130px">
+            <div class="row" style="height: 4px">
+                <h3 class="title" style="background-image:url(../img/title.png);float: left">公司信息</h3>
+            </div>
+            <div id="info_form" class="row box" style="padding-bottom: 0;text-align: center">
+                <div style="clear: both;height: 10px"></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"">
+                    <div style="margin-bottom: 15px">
+                        <label style="font-size: 16px; width: 90px">用户名</label>
+                        <input id="name" style="width: 200px">
+                    </div>
+                    <div style="margin-bottom: 15px">
+                        <label style="font-size: 16px; width: 90px">联系方式</label>
+                        <input id="phone" style="width: 200px">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div style="margin-bottom: 15px">
+                        <label style="font-size: 16px; width: 90px">账号</label>
+                        <input id="username" style="width: 200px">
+                    </div>
+                    <div style="margin-bottom: 15px">
+                        <label style="font-size: 16px; width: 90px">密码</label>
+                        <input id="password" style="width: 200px">
+                    </div>
+                </div>
+                <button id="mend" type="submit" class="btn_submit" style="font-size: 20px;margin-bottom: 10px">修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+

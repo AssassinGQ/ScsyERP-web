@@ -1,0 +1,11 @@
+.show-tick>.btn{
+    line-height: 0.9;
+    color: black !important;
+    border: 1px solid black !important;
+}
+.show-tick >.btn:hover, .show-tick>.btn:focus{
+    background-color: white !important;
+}
+.show-tick > .dropdown-menu{
+    padding: 0;
+}

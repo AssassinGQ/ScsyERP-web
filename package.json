@@ -1,0 +1,63 @@
+{
+  "name": "transportation-dashboard",
+  "version": "0.1.0",
+  "description": "危化品运输管理平台",
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot  --host 0.0.0.0",
+    "start.production": "cross-env NODE_ENV=production webpack-dev-server --inline --hot",
+    "analyze": "cross-env NODE_ENV=production webpack --config bundle-analyzer-config.js -p",
+    "build": "cross-env NODE_ENV=production webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fnlctrl/transportation-dashboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fnlctrl/transportation-dashboard/issues"
+  },
+  "homepage": "https://github.com/fnlctrl/transportation-dashboard#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.4",
+    "@fortawesome/fontawesome-free-solid": "^5.0.8",
+    "axios": "^0.17.1",
+    "date-fns": "^1.29.0",
+    "echarts": "^4.0.4",
+    "element-ui": "^2.2.2",
+    "humanize-duration": "^3.14.0",
+    "qs": "^6.6.0",
+    "vue": "^2.5.11",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^2.4.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.3",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-component": "^1.0.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "cross-env": "^5.1.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.0.7",
+    "mini-css-extract-plugin": "^0.2.0",
+    "postcss": "^6.0.14",
+    "postcss-loader": "^2.0.9",
+    "style-loader": "^0.19.1",
+    "url-loader": "^0.6.2",
+    "vue-loader": "^15.0.0-beta.7",
+    "vue-template-compiler": "^2.5.11",
+    "webpack": "^4.16.1",
+    "webpack-bundle-analyzer": "^2.11.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.10"
+  }
+}

@@ -1,0 +1,9 @@
+.table {
+    margin-top: 8px;
+}
+.row {
+    margin: 8px 0;
+}
+.view :global(.el-select) {
+    width: 100%;
+}

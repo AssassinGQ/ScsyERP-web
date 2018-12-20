@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆注册</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script type="text/javascript" src="../commom/bootstrap.js"></script>
+    <script src="../js/login.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/login1.css">
+    <link rel="stylesheet" type="text/css" href="../css/maincss.css">
+</head>
+
+
+<body style="background-color: #f0f0f0; text-align:center">
+<div class="modal fade" id="forget_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">修改密码</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <div class="row" style="position: relative;top:5px">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <label style="float:left;width:70px">手机号:</label>
+                        <input id="phone" style="width: 150px;height: 23px;float: left">
+                        <a id="getvode" style="float: left;padding-left: 10px">获取验证码</a>
+                        <div style="clear: left;height: 5px"></div>
+                        <label style="float:left;width:70px">验证码:</label>
+                        <input id="vcode" style="width: 150px;height: 23px;float: left">
+                        <div style="clear: left;height: 5px"></div>
+                        <label style="float:left;width:70px">新密码:</label>
+                        <input id="newpassword" style="width: 150px;height: 23px;float: left">
+                        <div style="clear: left;height: 5px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px">
+                <p style="float: left;color:red" id="password_info"></p>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id = "password" type="submit" class="btn btn-primary">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 30px"></div>
+<img src="../img/logo1.png" style="width: 450px;height: 130px;position: relative;left:80px">
+<div style="margin:0 auto;width: 400px;background-color: white">
+    <!--
+    <div style="height: 47px;border-bottom: 1px solid #d0d0d0;">
+        <ul class="nav nav-tabs mt1">
+            <li class="tab1 active">
+                <a href="#login" data-toggle="tab" aria-expanded="true">用户登录</a>
+            </li>
+            <li>
+                <a id="tab2 tab1" href="#register" data-toggle="tab" aria-expanded="false">用户注册</a>
+            </li>
+        </ul>
+    </div>
+    -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="login">
+            <form>
+                <div style="height: 30px"></div>
+                <div style="margin-bottom: 15px">
+                    <input id="l-username" class="login-input pl1" placeholder="用户名" required="required">
+                </div>
+                <div style="margin-bottom: 20px">
+                    <input id="l-password" class="login-input pl1" type="password" placeholder="密码" required="required">
+                </div>
+                <div>
+                    <a id="login-btn" type="submit" class="login-btn btn">登陆</a>
+                </div>
+                <div style="height: 10px"></div>
+                <a id="forget">忘记密码?</a>
+                <div>
+                    <p id="info1" style="color: red;"></p>
+                </div>
+            </form>
+        </div>
+        <!--
+        <div class="tab-pane" id="register">
+            <div style="height: 30px"></div>
+            <div style="margin-bottom: 15px">
+                <input id="r-phone" class="login-input pl1" placeholder="手机号">
+                <button id="vcode-btn" style="float: right;margin-right: 40px;position: relative;top:-35px;height: 35px">获取验证码</button>
+            </div>
+            <div style="margin-bottom: 15px;position: relative;top:-20px">
+                <input id="r-vcode" class="login-input pl1" placeholder="验证码">
+            </div>
+            <div style="margin-bottom: 15px;position: relative;top:-20px">
+                <input id="r-username" class="login-input pl1" placeholder="账号">
+            </div>
+            <div style="margin-bottom: 15px;position: relative;top:-20px">
+                <input id="r-name" class="login-input pl1" placeholder="名称">
+            </div>
+            <div style="margin-bottom: 15px;position: relative;top:-20px">
+                <input id="r-password" class="login-input pl1" placeholder="密码" type="password">
+            </div>
+            <div style="margin-bottom: 20px;position: relative;top:-20px">
+                <input id="confirm" class="login-input pl1" placeholder="确认密码" type="password">
+            </div>
+            <div style="margin-bottom: 20px;position: relative;top:-20px">
+                <select id="r-type" class="login-input pl1">
+                    <option value="1">承运方</option>
+                    <option value="2">生产商</option>
+                    <option value="3">政府</option>
+                </select>
+            </div>
+            <div id="dept" style="margin-bottom: 20px;position: relative;top:-20px;display: none">
+                <select id="r-dept" class="login-input pl1">
+                    <option value="0">运管</option>
+                    <option value="1">交警</option>
+                    <option value="2">环保</option>
+                    <option value="3">消防</option>
+                    <option value="4">安检</option>
+                </select>
+            </div>
+            <div style="position: relative;top:-20px">
+                <button id="register-btn" class="login-btn btn">注册</button>
+            </div>
+            <div style="position: relative;top:-20px">
+                <p id="info" style="color: red;"></p>
+            </div>
+        </div>
+        -->
+    </div>
+    <div style="height: 10px;position: relative;top:-20px"></div>
+</div>
+</body>
+</html>

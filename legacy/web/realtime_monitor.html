@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>异常监控</title>
+    <script src="../js/jquery211.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="../js/crud.js"></script>
+    <script src="../js/realtime_monitor.js"></script>
+    <script src="../js/bootstrap-paginator.js"></script>
+    <script src="../js/bootstrap-table.js"></script>
+    <script src="../js/bootstrap-select.min.js"></script>
+    <script src="../js/defaults-zh_CN.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/maincss.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link href="../css/bootstrap-table.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/tab.css">
+    <link rel="stylesheet" href="../css/page.css">
+    <style>
+        .circle{
+            width: 22px;
+            height: 22px;
+            background-color: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<div class="modal fade" id="detail_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 700px;">
+            <div class="modal-header">
+                <h4 class="modal-title">查看信息</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 0px">
+                <ul class="nav nav-tabs" style="border-bottom: 1px solid #E0E0E0;margin-bottom: 10px">
+                    <li id="tab1" class="active">
+                        <a href="#modal1" data-toggle="tab">警报信息</a>
+                    </li>
+                    <li id="tab2">
+                        <a href="#modal2" data-toggle="tab">车辆信息</a>
+                    </li>
+                    <li id="tab6">
+                        <a href="#modal6" data-toggle="tab">司机信息</a>
+                    </li>
+                    <li id="tab3">
+                        <a href="#modal3" data-toggle="tab">订单信息</a>
+                    </li>
+                    <li id="tab4">
+                        <a href="#modal4" data-toggle="tab">承运方信息</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="modal1">
+                        <div class="row" style="width: 700px;position: relative;top:5px">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width:70px">承运公司:</label>
+                                <input name="manname" disabled="disabled" style="width: 150px;height: 23px;">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">事故类型:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">事故地点:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:90px">车牌号:</label>
+                                <input name="manname" disabled="disabled" style="width: 150px;height: 23px;">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:90px">道路运输证:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">司机反馈:</label>
+                                <input name="manname" disabled="disabled" style="width: 150px;height: 23px;">
+                                <div style="clear: left;height: 5px"></div>
+
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width:70px">车牌号:</label>
+                                <input name="phone" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">事故时间:</label>
+                                <input name="password" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">处理状态:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:90px">车辆类型:</label>
+                                <input name="phone" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:90px">容积:</label>
+                                <input name="password" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:90px">证件有效期:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">拍照自检:</label>
+                                <br>
+                                <img name="username" disabled="disabled" style="width: 300px;height: 300px">
+                                <div style="clear: left;height: 5px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="modal2">
+                        <div class="row" style="width: 700px;position: relative;top:5px">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width:90px">车牌号:</label>
+                                <input name="manname" disabled="disabled" style="width: 150px;height: 23px;">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:90px">吨位:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:90px">道路运输证:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width:90px">车辆类型:</label>
+                                <input name="phone" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:90px">容积:</label>
+                                <input name="password" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:90px">证件有效期:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="modal3">
+                        <div class="row" style="width: 700px;position: relative;top:5px">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width:70px">承运方:</label>
+                                <input name="manname" disabled="disabled" style="width: 150px;height: 23px;">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">托运方:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">货物名称:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">货物重量:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">包装规格:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">装货地点:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">装货时间:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">运输路线:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width:70px">订单状态:</label>
+                                <input name="phone" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">收货方:</label>
+                                <input name="password" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">货物类型:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">货物体积:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">驾驶员:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">卸货地点:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">卸货时间:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">备注:</label>
+                                <textarea name="username" style="width: 200px;height: 45px;background-color: white;border: 1px solid black"></textarea>
+                                <div style="clear: left;height: 5px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="modal4">
+                        <div class="row" style="width: 700px;position: relative;top:5px">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width:70px">承运公司:</label>
+                                <input name="manname" disabled="disabled" style="width: 150px;height: 23px;">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">责任人:</label>
+                                <input name="username" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width:70px">营业执照:</label>
+                                <input name="phone" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:70px">联系方式:</label>
+                                <input name="password" disabled="disabled" style="width: 150px;height: 23px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="modal6">
+                        <div class="row" style="width: 700px;position: relative;top:5px">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width:80px">驾驶员姓名:</label>
+                                <input name="manname" disabled="disabled" style="width: 150px;height: 23px;">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:80px">从业资格证:</label>
+                                <input name="manname" disabled="disabled" style="width: 150px;height: 23px;">
+                                <div style="clear: left;height: 5px"></div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label style="float:left;width:80px">驾驶员手机:</label>
+                                <input name="phone" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                                <label style="float:left;width:80px">证件有效期:</label>
+                                <input name="phone" disabled="disabled" style="width: 150px;height: 23px">
+                                <div style="clear: left;height: 5px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px">
+                <p style="float: left;color:red" id="detail_info"></p>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-default">审核未通过</button>
+                <button id="pass" type="button" class="btn btn-primary">审核通过</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<body>
+<div style="height: 45px; background-color: #0f88eb">
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 7px">
+        <a class="dropdown-toggle icon-user icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right">
+            <li style="border-bottom: 1px solid #e0e0e0"><a href="userinfo_admin.html">用户信息</a></li>
+            <li><a href="login_gov2.html">注销</a></li>
+        </ul>
+    </li>
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 15px">
+        <a class="dropdown-toggle icon-envelope icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right" style="height: 150px;width:200px;overflow: scroll">
+            <li style="border-bottom: 1px solid #e0e0e0;height: 30px"><a href="history_monitor.html">未读事故</a></li>
+            <li style="border-bottom: 1px solid #e0e0e0"><a>异常1</a></li>
+            <li style="border-bottom: 1px solid #e0e0e0"><a>异常2</a></li>
+            <li style="border-bottom: 1px solid #e0e0e0"><a>异常3</a></li>
+            <li style="border-bottom: 1px solid #e0e0e0"><a>异常4</a></li>
+        </ul>
+    </li>
+    <div class="circle" style="float: right;text-align: center;position: relative;left: 10px"><span style="color: white;font-weight: 600">12</span></div>
+</div>
+<div class="container1" style="position: absolute;top:45px;width: 99%">
+    <div style="height:7px"></div>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-right: 10px">
+            <embed type="text/html" src="catalog.html" style="width: 100%;height: 600px"/>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+            <audio id="audio" style="display: none" src="../video/alarm1.wav" controls="controls">wav</audio>
+            <div class="row" style="height: 4px">
+                <h3 class="title" style="background-image:url(../img/title.png);float: left">异常监控</h3>
+            </div>
+            <div class="row box" style="padding-bottom: 0;">
+                <div style="clear: both"></div>
+                <!--
+                <ul class="nav nav-tabs" style="position: relative;top:-5px;">
+                    <li class="active"><a href="realtime_monitor.html">事故警报</a></li>
+                    <li><a href="realtime_monitor2.html">出行车辆</a></li>
+                </ul>
+                -->
+                <div id="searchform" class="row" style="padding-bottom: 0;">
+                    <div style="clear: both;height:5px"></div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <label style="width: 70px">事故类型：</label>
+                        <select class="selectpicker show-tick"  multiple data-live-search="false">
+                            <option value="0">超载</option>
+                            <option value="1">超速</option>
+                            <option value="2">疲劳驾驶</option>
+                            <option value="3">车胎故障</option>
+                        </select>
+                        <div style="height: 10px"></div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <label style="width: 70px">承运公司：</label>
+                        <select class="selectpicker show-tick" size="10" multiple data-live-search="true">
+                                <option value="0">公司1</option>
+                                <option value="1">公司2</option>
+                                <option value="2">公司3</option>
+                                <option value="3">公司4</option>
+                                <option value="4">公司1</option>
+                                <option value="5">公司2</option>
+                                <option value="6">公司3</option>
+                                <option value="7">公司4</option>
+                                <option value="8">公司1</option>
+                                <option value="9">公司2</option>
+                                <option value="10">公司3</option>
+                                <option value="11">公司4</option>
+                        </select>
+                        <button class="btn1 btn btn-primary" id="search" style="height:30px">更改条件</button>
+                        <div style="height: 10px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row box">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding :0px">
+                    <div class="btn-group" style="position: relative;float: left">
+                        <button class="btn btn-default" id="btn_detail">查看详细</button>
+                        <button class="btn btn-default" id="btn_remove">清空列表</button>
+                    </div>
+                    <div style="clear: both"></div>
+                    <h4 class="table_title" style="margin:0;">警报信息</h4>
+                    <div style="width: 100%;overflow-x: scroll">
+                        <table id="table1"></table>
+                    </div>
+                    <div style="margin-top: 5px;">
+                        <div style="margin: 0 auto;float: left" id="page1"></div>
+                        <span id="total" style="float: left;color: #428bca;padding-top: 6px;font-size: 15px;margin-left: 5px">共1页</span>
+                        <input id="index" style="float: left;margin-left:5px;border: 1px solid #dddddd;width: 60px;height: 35px;">
+                        <button id="to" class="btn btn-primary" style="float: left;margin-left: 5px">跳转</button>
+                        <select style="float: left;margin-left: 5px;height: 35px;width: 50px" onchange="change(this)">
+                            <option value="5">5</option>
+                            <option value="10" selected = "selected">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,18 @@
+.grid{
+    height: 150px;
+    width:150px;
+    border:solid #ddd 1px;
+}
+
+.grid td{
+    border:solid #ddd 1px;
+    align: center;
+}
+
+.grid button{
+    border:0px;
+    height:100%;
+    width:100%;
+    background-color: #f0f3f5;
+    color: #1e91ca;
+}

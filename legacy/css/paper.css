@@ -1,0 +1,22 @@
+.question textarea{
+    width:70%;
+    height:70px
+}
+
+.question p{
+    margin-top:10px;
+    margin-bottom: 0px;
+}
+
+.question input{
+    width: 50%;
+}
+
+.answer label{
+    width: 30px;
+    padding-left: 10px;
+}
+
+.answer input{
+    width: 60px;
+}

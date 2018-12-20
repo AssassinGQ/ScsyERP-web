@@ -1,0 +1,248 @@
+@CHARSET "UTF-8";
+.container1 {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 0;
+}
+
+input {
+    border: 1px solid #555;
+}
+
+input[disabled] {
+    background-color: white;
+    color: black;
+}
+
+.input_1 {
+    width:120px;
+    height:26px;
+}
+
+.btn1 {
+    vertical-align:middle ;
+    height:28px;
+    line-height:10px;
+}
+.box{
+    background-color:#F9F9F9;
+    border: 1px solid #d9d9d9;
+    padding: 15px;
+}
+
+
+.box2{
+    background-color:#F8FBFF;
+    border: 1px solid #d9d9d9;
+    padding: 15px;
+}
+
+.box3{
+    background-color:#FFFFFF;
+    border: 1px solid #d9d9d9;
+    padding: 15px;
+}
+
+.check_td{
+    width:325px;
+    align: right !important;
+}
+
+.ipt{
+    width:150px;
+}
+
+.title {
+    height: 37px;
+    width: 169px;
+    position: relative;
+    cursor: pointer;
+    font-size: 17px;
+    text-align: center;
+    letter-spacing: 9px;
+    float: left;
+    line-height: 37px;
+    color: #fff;
+    margin-left: 15px;
+    margin-top: 0px;
+}
+
+.select1{
+    float: left;
+    width: 120px;
+    height: 23px;
+}
+
+.modal p{
+    font-size: 15px;
+}
+
+.modal label{
+    font-size: 15px;
+}
+
+.modal-header{
+    height: 35px;
+    background-color: #0f88eb
+}
+
+.modal-title{
+    position:relative;top:-12px;font-size: 20px;color: white;font-weight: 600
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.title3
+{
+    font-weight: 600;
+    color:#1e91ca;
+    font-size: 1.2em;
+}
+
+
+hr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #fff;
+}
+/*Navbar*/
+
+
+footer {
+    padding: 1em;
+    margin-top: 4em;
+    color: #666;
+    font-size: .85em;
+    line-height: 1.3em;
+}
+footer hr {
+    margin: 2em -2em;
+}
+
+.table_info{
+    border: 1px solid #555;
+}
+
+.table_info td{
+    text-align: center;
+    border: 1px solid #555;
+}
+
+.table_info .td1{
+    background-color: #efefef;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 25px;
+}
+
+.table_info .td2{
+    background-color: white;
+    font-size: 14px;
+    white-space: nowrap;
+    line-height: 25px;
+}
+
+.table_title {text-align:center;background-color: #0f88eb; font-size: 16px; line-height: 30px; font-weight: bold;color: white; margin:0}
+.modal_title {margin:0; position: relative; right:10px;background-color: #f1f5f7; font-size: 1.2em; line-height: 28px; font-weight: 600;color: #1e91ca;padding-bottom: 0 !important;}
+body {background-color:#EEEEEE;}
+
+a:hover{ text-decoration:none;}
+
+label.error {
+    color: red;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    left:15px;
+}
+
+ .circle{
+     width: 22px;
+     height: 22px;
+     background-color: red;
+     border-radius: 50%;
+ }
+
+.fixed-table-container thead th .th-inner{
+    padding: 3px;
+    line-height: 20px;
+    font-size:15px;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+    padding: 5px;
+    line-height: 1;
+}
+
+/*tab*/
+.nav-tabs > li > a{
+    font-weight: 700;
+    color:#555;
+    line-height: 0.7;
+    padding: 8px;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: white;
+    cursor: default;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    background-color: #0f88eb;
+}
+
+.nav-tabs{
+    border-bottom: 0px
+}
+
+/*select*/
+.show-tick>.btn{
+    line-height: 0.9;
+    color: black !important;
+    border: 1px solid black !important;
+}
+.show-tick >.btn:hover, .show-tick>.btn:focus{
+    background-color: white !important;
+}
+.show-tick > .dropdown-menu{
+    padding: 0;
+}
+
+/*page*/
+.page_input{
+    border: 1px solid #dddddd;
+    width: 60px;
+    height: 35px;
+}
+
+/*input_table*/
+.input_table{
+    border:1px solid #5F6F7E;
+    border-collapse:collapse;
+    font-family:Arial;
+}
+.input_table caption{       /*标题*/
+    text-align:left;
+    padding-bottom:6px;
+}
+.input_table th{           /*行列标题*/
+    border:1px solid #5F6F7E;
+    background-color:#E2E2E2;
+    color:#000000;
+    text-align:left;
+    font-weight:normal;
+    padding:2px 8px 2px 6px;
+    margin:0px;
+}
+.input_table td{         /*表格行*/
+    margin:0px;
+    padding:0px;
+    border:1px solid #ABABAB;   /* 单元格边框 */
+}
+.input_table input{          /*可输入区域样式*/
+    width:100px;
+    padding:1px 3px 1px 3px;
+    margin:0px;
+    border:none;                /* 输入框不要边框 */
+    font-family:Arial;
+}
+

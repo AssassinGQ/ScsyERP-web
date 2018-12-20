@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>费用审核</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="../commom/bootstrap-paginator.js"></script>
+    <script src="../commom/jquery.PrintArea.js"></script>
+    <!--<script src="../commom/echarts.min.js"></script> -->
+    <script src="../commom/bootstrap-select.min.js"></script>
+    <script src="../commom/defaults-zh_CN.min.js"></script>
+    <script src="../commom/bootstrap-table.js"></script>
+    <script src="../commom/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script src="../commom/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script src="../commom/cy_common.js"></script>
+    <script src="../js/cy_feecheck.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-table.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="../css/maincss.css">
+    <style>
+        #modal1 input{
+            width:80px;height: 23px
+        }
+        #modal1 label{
+            margin-right: 5px;
+        }
+        #modal2 input{
+            width:80px;height: 23px
+        }
+        #modal2 label{
+            margin-right: 5px;
+        }
+        #modal3 input{
+            width:80px;height: 23px
+        }
+        #modal3 label{
+            margin-right: 5px;
+        }
+        #modal4 input{
+            width:80px;height: 23px
+        }
+        #modal4 label{
+            margin-right: 5px;
+        }
+        #modal5 input{
+            width:80px;height: 23px
+        }
+        #modal5 label{
+            margin-right: 5px;
+        }
+        #modal7 img{
+            width: 200px;height: 150px;
+            margin-bottom: 10px;
+        }
+        #modal8 img{
+            width: 200px;height: 150px;
+            margin-bottom: 10px;
+        }
+        .img-item{
+            width: 75px;
+            height: 75px;
+            border: 1px solid black;
+            margin: 10px 4px 10px 4px;
+            float: left;
+        }
+    </style>
+</head>
+
+<div class="modal fade" id="loadweight_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content"  style="width: 700px;">
+            <div class="modal-header">
+                <h4 class="modal-title">明细记录</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <div id="loadweight_form" style="height:400px; overflow-y: scroll">
+                    <div class="row" style="width: 700px;position: relative;top:5px">
+                        <div id="modal1" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        </div>
+
+                        <div id="modal2" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addfuel_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content"  style="width: 700px;">
+            <div class="modal-header">
+                <h4 class="modal-title">明细记录</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <div id="addfuel_form" style="height:400px; overflow-y: scroll">
+                    <div class="row" style="width: 700px;position: relative;top:5px">
+                        <div id="modal3" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        </div>
+                        <div id="modal4" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        </div>
+                        <div id="modal5" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="img_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 520px">
+            <div class="modal-header">
+                <h4 class="modal-title">票据记录</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <div id="img_form" style="height:400px; overflow-y: scroll">
+                    <div class="row" style="width: 520px;position: relative;top:5px">
+                        <div id="modal7" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        </div>
+                        <div id="modal8" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        </div>
+                    </div>
+                </div>
+                <div id="big" style="display: none">
+                    <img id="big_img" src="" style="width: 70%;height: 70%">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="check1_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content"  style="width: 700px;">
+            <div class="modal-header">
+                <h4 class="modal-title">费用审核</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <div id="check1_form">
+                    <div class="row" style="width: 700px;position: relative;top:5px">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;width:70px">重车里程:</label>
+                            <input name="mileload_driver" style="width: 120px;height: 23px">
+                            <div style="clear: left;height: 5px"></div>
+                            <label style="float:left;width:70px">里程共计:</label>
+                            <input name="miletotal_driver" style="width: 120px;height: 23px">
+                            <div style="clear: left;height: 5px"></div>
+                            <label style="float:left;width:70px">审批说明:</label>
+                            <textarea id="verifyret" name="verifyret" style="width: 200px;height: 45px"></textarea>
+                            <div style="clear: left;height: 5px"></div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;width:100px">空车里程:</label>
+                            <input name="mileunload_driver" style="width: 120px;height: 23px">
+                            <div style="clear: left;height: 5px"></div>
+                            <label style="float:left;width:100px">硬件上次里程</label>
+                            <input name="milereal" style="width: 120px;height: 23px">
+                            <div style="clear: left;height: 5px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px">
+                <p style="float: left;color:red" id="check1_info"></p>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="reject1" type="button" class="btn btn-default">审核未过</button>
+                <button id="pass1" type="button" class="btn btn-primary">审核通过</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="check_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content"  style="width:930px;">
+            <div class="modal-header">
+                <h4 class="modal-title">费用审核</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <div id="check_form">
+                    <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                        <table id="detail_table" class="input_table">
+                            <colgroup>
+                                <col style="width:130px">
+                                <col style="width:180px">
+                                <col style="width:130px">
+                                <col style="width:180px">
+                                <col style="width:130px">
+                                <col style="width:180px">
+                            </colgroup>
+                            <tr>
+                                <th>订单号</th>
+                                <td><input name="ordersid" disabled="disabled" style="width:100%"></td>
+                                <th>费用清单号</th>
+                                <td><input name="sid" disabled="disabled" style="width:100%"></td>
+                                <th>提交时间</th>
+                                <td><input name="createdat" style="width:100%"></td>
+                            </tr>
+                            <tr>
+                                <th>油费合计</th>
+                                <td><input name="addfueltotal" disabled="disabled" style="width:100%"></td>
+                                <th>加油量合计</th>
+                                <td><input name="addfuelvol" disabled="disabled" style="width:100%"></td>
+                                <th>过路费合计</th>
+                                <td><input name="roadtolltotal" disabled="disabled" style="width:100%"></td>
+                            </tr>
+                            <tr>
+                                <th>总空车过路奖励</th>
+                                <td><input name="allowanceunloadroadtoll" disabled="disabled" style="width:100%"></td>
+                                <th>总重车过路奖励</th>
+                                <td><input name="allowanceloadroadtoll" disabled="disabled" style="width:100%"></td>
+                                <th>补助奖励合计</th>
+                                <td><input name="allowancetotal" disabled="disabled" style="width:100%"></td>
+                            </tr>
+                            <tr>
+                                <th>重车里程(司机)</th>
+                                <td><input name="mileload" disabled="disabled" style="width:100%"></td>
+                                <th>空车里程(司机)</th>
+                                <td><input name="mileunload" disabled="disabled" style="width:100%"></td>
+                                <th>里程共计(司机)</th>
+                                <td><input name="miletotal" disabled="disabled" style="width:100%"></td>
+                            </tr>
+                            <tr>
+                                <th>重车过磅重量</th>
+                                <td><input id="_realloadweight" disabled="disabled" style="width:100%"></td>
+                                <th>重车过磅奖励</th>
+                                <td><input id="_allowanceloadroadtoll" disabled="disabled" style="width:100%"></td>
+                                <th>空车过磅重量</th>
+                                <td><input id="_realunloadweight" disabled="disabled" style="width:100%"></td>
+                            </tr>
+                            <tr>
+                                <th>空车过磅奖励</th>
+                                <td><input id="_allowanceunloadroadtoll" disabled="disabled" style="width:100%"></td>
+                                <th>装货重量</th>
+                                <td><input name="loadweight" disabled="disabled" style="width:100%"></td>
+                                <th>折白重量</th>
+                                <td><input name="zbweight" disabled="disabled" style="width:100%"></td>
+                            </tr>
+                            <tr>
+                                <th>加油升数</th>
+                                <td><input id="_addfuelvol" disabled="disabled" style="width:100%"></td>
+                                <th>加油现金金额</th>
+                                <td><input id="_addfuelmoney" disabled="disabled" style="width:100%"></td>
+                                <th>加油刷卡金额</th>
+                                <td><input id="_addfuelcash" disabled="disabled" style="width:100%"></td>
+                            </tr>
+                            <tr>
+                                <th>重车过路费</th>
+                                <td><input name="roadtollload" disabled="disabled" style="width:100%"></td>
+                                <th>轻车过路费</th>
+                                <td><input name="roadtollunload" disabled="disabled" style="width:100%"></td>
+                                <th>现金过路费</th>
+                                <td><input name="roadtollcash" style="width:100%"></td>
+                            </tr>
+                            <tr>
+                                <th>差旅补助</th>
+                                <td><input name="allowancetravel" disabled="disabled" style="width:100%"></td>
+                                <th>国道补助</th>
+                                <td><input name="allowancenationalroad" disabled="disabled" style="width:100%"></td>
+                                <th>加水费</th>
+                                <td><input name="fareaddwater" disabled="disabled" style="width:100%"></td>
+                            </tr>
+                            <tr>
+                                <th>维修费</th>
+                                <td><input name="faremaintain" disabled="disabled" style="width:100%"></td>
+                                <th>罚款</th>
+                                <td><input name="farefine" disabled="disabled" style="width:100%"></td>
+                                <th>其他费用</th>
+                                <td><input name="fareother" disabled="disabled" style="width:100%"></td>
+                            </tr>
+                        </table>
+                        <div style="margin-top: 10px;border: 1px solid black;">
+                            <div class="img-item">
+                                <img id="img1" style="width: 100%;height: 100%">
+                            </div>
+                            <div class="img-item">
+                                <img id="img2" style="width: 100%;height: 100%">
+                            </div>
+                            <div class="img-item">
+                                <img id="img3" style="width: 100%;height: 100%">
+                            </div>
+                            <div class="img-item">
+                                <img id="img4" style="width: 100%;height: 100%">
+                            </div>
+                            <div class="img-item">
+                                <img id="img5" style="width: 100%;height: 100%">
+                            </div>
+                            <div class="img-item">
+                                <img id="img6" style="width: 100%;height: 100%">
+                            </div>
+                            <div class="img-item">
+                                <img id="img7" style="width: 100%;height: 100%">
+                            </div>
+                            <div class="img-item">
+                                <img id="img8" style="width: 100%;height: 100%">
+                            </div>
+                            <div class="img-item">
+                                <img id="img9" style="width: 100%;height: 100%">
+                            </div>
+                            <div class="img-item">
+                                <img id="img10" style="width: 100%;height: 100%">
+                            </div>
+                            <div style="clear: both"></div>
+
+                        </div>
+                        <div>
+                            <div style="height: 10px"></div>
+                            <label style="float:left;width:70px">审批说明:</label>
+                            <textarea id="verifyret1" name="verifyret" style="width: 300px;height: 50px"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;">
+                <p style="float: left;color:red" id="check_info"></p>
+                <button id="print" type="button" class="btn btn-info">打印</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="reject" type="button" class="btn btn-default">审核未过</button>
+                <button id="pass" type="button" class="btn btn-primary">审核通过</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="chakan_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 750px">
+            <div class="modal-header">
+                <h4 class="modal-title">查看信息</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <table id="info_table" class="input_table">
+                    <colgroup>
+                        <col style="width:100px">
+                        <col style="width:160px">
+                        <col style="width:100px">
+                        <col style="width:160px">
+                        <col style="width:100px">
+                        <col style="width:160px">
+                    </colgroup>
+                    <tr>
+                        <th>订单号</th>
+                        <td><input name="sid" disabled="disabled" style="width:100%"></td>
+                        <th>订单状态</th>
+                        <td><input name="orderstatus" disabled="disabled" style="width:100%"></td>
+                        <th>创建时间</th>
+                        <td><input name="createdat" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>托运方</th>
+                        <td><input name="sellername" disabled="disabled" style="width:100%"></td>
+                        <th>收货方</th>
+                        <td><input name="buyername" disabled="disabled" style="width:100%"></td>
+                        <th>承运方</th>
+                        <td><input name="corporationname" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>装货地点</th>
+                        <td><input name="loadaddr" disabled="disabled" style="width:100%"></td>
+                        <th>卸货地点</th>
+                        <td><input name="unloadaddr" disabled="disabled" style="width:100%"></td>
+                        <th>返回地点</th>
+                        <td><input name="returnaddr" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>托运方手机</th>
+                        <td><input name="sellerphone" disabled="disabled" style="width:100%"></td>
+                        <th>收货方手机</th>
+                        <td><input name="buyerphone" disabled="disabled" style="width:100%"></td>
+                        <th>装货时间</th>
+                        <td><input name="loaddateddl" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>卸货时间</th>
+                        <td><input name="unloaddateddl" disabled="disabled" style="width:100%"></td>
+                        <th>货物名称</th>
+                        <td><input name="productname" disabled="disabled" style="width:100%"></td>
+                        <th>货物类型</th>
+                        <td><input name="producttype" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>货物重量</th>
+                        <td><input name="productweight" disabled="disabled" style="width:100%"></td>
+                        <th>货物体积</th>
+                        <td><input name="productvol" disabled="disabled" style="width:100%"></td>
+                        <th>路线名称</th>
+                        <td><input name="routename" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                    <tr>
+                        <th>车牌号</th>
+                        <td><input name="trucknumber" disabled="disabled" style="width:100%"></td>
+                        <th>驾驶员</th>
+                        <td><input name="drivername" disabled="disabled" style="width:100%"></td>
+                        <th>押运员</th>
+                        <td><input name="escortname" disabled="disabled" style="width:100%"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 5px;margin-top: 5px">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<body>
+<div style="height: 45px; background-color: #0f88eb">
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 7px">
+        <a class="dropdown-toggle icon-user icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right">
+            <li style="border-bottom: 1px solid #e0e0e0"><a href="userinfo_admin.html">用户信息</a></li>
+            <li><a href="login.html">注销</a></li>
+        </ul>
+    </li>
+</div>
+
+<div class="container1" style="position: absolute;top:45px;width: 99%">
+    <div style="height: 10px"></div>
+    <div class="row" style="height: 487px">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="height: 485px">
+            <embed type="text/html" src="cy_catalog.html" style="width: 100%;height: 600px"/>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="height: 130px">
+            <div class="row" style="height: 4px">
+                <h3 class="title" style="background-image:url(../img/title.png);float: left">费用审核</h3>
+            </div>
+            <div class="row box" style="padding-bottom: 0;">
+                <div style="clear: both"></div>
+                <div id="searchform" class="row" style="padding-bottom: 0;">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <label style="width: 70px">订单号：</label>
+                        <input type="text" name="ordersid" class="input_1">
+                        <div style="height: 10px"></div>
+                        <label style="width: 70px">驾驶员：</label>
+                        <input type="text" name="drivername" class="input_1">
+                        <div style="height: 10px"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <label style="width: 90px">费用清单号：</label>
+                        <input type="text" name="sid" class="input_1">
+                        <div style="height: 10px"></div>
+                        <label style="width: 90px">押运员：</label>
+                        <input type="text" name="escortname" class="input_1">
+                        <div style="height: 10px"></div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <label style="width: 70px;">创建时间：</label>
+                        <input type="text" id="start" class="input_1 day">
+                        <label>到</label>
+                        <input type="text" id="end" class="input_1 day">
+                        <button class="btn1 btn btn-primary" type="submit" id="search" style="height:28px">查询</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row box">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding :0px">
+                    <div class="btn-group" style="position: relative;float: left">
+                        <button class="btn btn-default" id = "btn_chakan">查看订单</button>
+                        <button class="btn btn-default" id = "btn_check1">一审</button>
+                        <button class="btn btn-default" id = "btn_check2">二审</button>
+                        <button class="btn btn-default" id = "btn_check3">三审</button>
+                        <button class="btn btn-default" id = "btn_check4">四审</button>
+                    </div>
+                    <div style="clear: both"></div>
+                    <h4 class="table_title" style="margin:0;">费用清单</h4>
+                    <div>
+                        <table id="table1" style="overflow-x: scroll"></table>
+                    </div>
+                    <div style="margin-top: 5px;">
+                        <div style="margin: 0 auto;float: left" id="page1"></div>
+                        <span id="total" style="float: left;color: #428bca;padding-top: 6px;font-size: 15px;margin-left: 5px">共1页</span>
+                        <input id="index" style="float: left;margin-left:5px;border: 1px solid #dddddd;width: 60px;height: 35px;">
+                        <button id="to" class="btn btn-primary" style="float: left;margin-left: 5px">跳转</button>
+                        <select style="float: left;margin-left: 5px;height: 35px;width: 50px" onchange="change(this)">
+                            <option value="5">5</option>
+                            <option value="10" selected = "selected">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

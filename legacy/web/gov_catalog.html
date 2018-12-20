@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../commom/jquery211.min.js"></script>
+    <script type="text/javascript" src="../commom/bootstrap.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/catalog.css">
+    <script>
+        function setCookie(name,value) {
+            document.cookie = name + "="+ escape (value);
+        }
+        function getCookie(name) {
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+            if(arr=document.cookie.match(reg)) return unescape(arr[2]);
+            else return null;
+        }
+
+        $(document).ready(function() {
+
+            var dept = getCookie("dept");
+            if(dept != 0 && dept != 4){
+                document.getElementById("order").parentNode.style.display = "none";
+            }
+            $('#catalog a').click(function () {
+                var id = this.parentNode.id;
+                setCookie("cur_page",id);
+                top.location.href = this.href;
+            });
+            var cur_page = getCookie("cur_page");
+            if(cur_page != null){
+                var page = document.getElementById(cur_page);
+                $(page).addClass("active");
+                $(page.parentNode).addClass("in");
+            }
+        });
+    </script>
+</head>
+<body style="background-color: transparent;margin-top: 2px">
+<div class="panel-group" id="catalog">
+    <div class="panel panel-default" style="margin-top: 0">
+        <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#info">基本信息</div>
+        <ul id="info" class="nav nav-list collapse">
+            <li id="userinfo"><a href="gov_userinfo.html">部门信息</a></li>
+            <li id="truckId"><a href="gov_truck.html">车辆信息</a></li>
+            <li id="driver"><a href="gov_driver.html">驾押员信息</a></li>
+        </ul>
+    </div>
+    <div class="panel panel-default" style="margin-top: 0">
+        <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#monitor">在途监控</div>
+        <ul id="monitor" class="nav nav-list collapse">
+            <li id="accident"><a href="gov_monitor.html">事故警报</a></li>
+            <li id="truckinfo"><a href="gov_trucklog.html">出行车辆</a></li>
+            <li id="history"><a href="gov_accidentquery.html">事故查询</a></li>
+        </ul>
+    </div>
+    <div class="panel panel-default" style="margin-top: 0">
+        <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#order">电子订单</div>
+        <ul id="order" class="nav nav-list collapse">
+            <li id="dingdan"><a href="gov_order.html">订单查询</a></li>
+            <li id="order_statis"><a href="gov_orderstatis.html">订单统计</a></li>
+        </ul>
+    </div>
+    <div class="panel panel-default" style="margin-top: 0">
+        <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#form">数据统计</div>
+        <ul id="form" class="nav nav-list collapse">
+            <li id="accident_statis"><a href="gov_accidentstatis.html">事故统计</a></li>
+        </ul>
+    </div>
+</div>
+</div>
+</body>
+</html>

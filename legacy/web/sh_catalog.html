@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../commom/jquery211.min.js"></script>
+    <script type="text/javascript" src="../commom/bootstrap.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/catalog.css">
+    <script>
+        $(document).ready(function() {
+            $('a').click(function () {
+                top.location.href = this.href;
+            })
+        });
+    </script>
+</head>
+<body style="background-color: transparent;margin-top: 2px">
+<div class="panel-group" id="catalog">
+    <div class="panel panel-default" style="margin-top: 0">
+        <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#yundan">基本信息</div>
+        <ul id="yundan" class="nav nav-list collapse">
+            <li><a href="sh_userinfo.html">用户信息</a></li>
+        </ul>
+    </div>
+    <div class="panel panel-default" style="margin-top: 0">
+        <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#info">电子运单</div>
+        <ul id="info" class="nav nav-list collapse">
+            <li><a href="sh_order.html">查询订单</a></li>
+        </ul>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>管理员信息</title>
+    <script src="../commom/jquery211.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="../commom/bootstrap-paginator.js"></script>
+    <!--<script src="../commom/echarts.min.js"></script> -->
+    <script src="../commom/bootstrap-select.min.js"></script>
+    <script src="../commom/defaults-zh_CN.min.js"></script>
+    <script src="../commom/bootstrap-table.js"></script>
+    <script src="../commom/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script src="../commom/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script src="../commom/cy_common.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-table.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="../css/maincss.css">
+    <script src="../js/cy_administrator.js"></script>
+</head>
+
+<div class="modal fade" id="add_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width: 700px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">添加信息</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <div id="add_form">
+                    <div class="row" style="width: 700px;position: relative;top:5px">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;width:70px">用户名:</label>
+                            <input name="username" style="width: 150px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:70px">邮箱</label>
+                            <input name="email" style="width: 150px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:70px">部门:</label>
+                            <select name="dept" style="width: 150px;height: 23px">
+                                <option value="-1"></option>
+                                <option value="0">仓储</option>
+                                <option value="1">危化品</option>
+                                <option value="2">财务</option>
+                                <option value="3">信息</option>
+                                <option value="4">经理</option>
+                            </select>
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;width:70px">姓名:</label>
+                            <input name="name" style="width: 150px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:70px">手机号:</label>
+                            <input name="phone" style="width: 150px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+
+                        </div>
+                    </div>
+
+                    <!--
+                    <h4 class="modal_title" style="width:680px">证件信息</h4>
+
+                    <div class="row" style="width: 700px;position: relative;top:5px">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;width:85px">道路运输证:&nbsp</label>
+                            <input name="RTCnumber" style="width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;">发证机构:&nbsp</label>
+                            <input name="RTCorganization" style="position: absolute;left: 115px;width: 120px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                        </div>
+                    </div>
+                    -->
+
+                </div>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 10px;margin-top: 5px">
+                <p style="float: left;color:red" id="add_info"></p>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="add" type="button" class="btn btn-primary">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mend_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width: 700px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">修改信息</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 5px; padding-bottom: 5px">
+                <div id="mend_form">
+                    <div class="row" style="width: 700px;position: relative;top:5px">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;width:70px">用户名:</label>
+                            <input name="username" style="width: 150px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:70px">邮箱</label>
+                            <input name="email" style="width: 150px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:70px">部门:</label>
+                            <select name="dept" style="width: 150px;height: 23px">
+                                <option value="-1"></option>
+                                <option value="0">仓储</option>
+                                <option value="1">危化品</option>
+                                <option value="2">财务</option>
+                                <option value="3">信息</option>
+                                <option value="4">经理</option>
+                            </select>
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label style="float:left;width:70px">姓名:</label>
+                            <input name="name" style="width: 150px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                            <label style="float:left;width:70px">手机号:</label>
+                            <input name="phone" style="width: 150px;height: 23px">
+                            <div style="clear: left"></div>
+                            <div style="height: 5px"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 10px;margin-top: 5px">
+                <p style="float: left;color:red" id="mend_info"></p>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="mend" type="button" class="btn btn-primary">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="delete_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width: 370px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="float: left">确认删除</h4>
+            </div>
+            <div class="modal-body" style="width:350px;padding-top: 5px; padding-bottom: 5px;height: 70px;text-align: center">
+                <p id="ordersid" style="width: 200px;margin: 0 auto;font-size: 18px;margin-bottom: 10px">确认删除</p>
+                <button class="btn btn-default" style="float: left;margin-left: 100px" data-dismiss="modal">取消</button>
+                <label style="width: 20px;float: left"></label>
+                <button id="delete" class="btn btn-danger" style="float: left">删除</button>
+            </div>
+            <div class="modal-footer" style="padding-top:5px;padding-bottom: 0px;margin-top: 5px;height: 30px;text-align: center">
+                <p id="delete_info" style="color: red;width: 170px;margin: 0 auto"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<body>
+<div style="height: 45px; background-color: #0f88eb">
+    <li class="dropdown" style="float: right;list-style-type:none; padding-top: 7px;padding-right: 7px">
+        <a class="dropdown-toggle icon-user icon-2x" data-toggle="dropdown" style="color: white;text-decoration:none"></a>
+        <ul class="dropdown-menu pull-right">
+            <li style="border-bottom: 1px solid #e0e0e0"><a href="userinfo_admin.html">用户信息</a></li>
+            <li><a href="login.html">注销</a></li>
+        </ul>
+    </li>
+</div>
+
+<div class="container1" style="position: absolute;top:45px;width:99%">
+    <div style="height: 10px"></div>
+    <div class="row" style="height: 487px">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="height: 485px">
+            <embed type="text/html" src="cy_catalog.html" style="width: 100%;height: 600px"/>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="height: 130px">
+            <div class="row" style="height: 4px">
+                <h3 class="title" style="background-image:url(../img/title.png);float: left">管理员信息</h3>
+            </div>
+            <div class="row box" style="padding-bottom: 0;">
+                <div style="clear: both"></div>
+                <div id="searchform" class="row" style="padding-bottom: 0;">
+                    <div style="clear: both;height:5px"></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <label >用户名：</label>
+                        <input type="text" name="name" class="input_1">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <label >手机：</label>
+                        <input type="text" name="phone" class="input_1">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <label style="float:left;width:70px">部门:</label>
+                        <select name="dept" style="width: 120px;height: 23px">
+                            <option value="-1"></option>
+                            <option value="0">仓储</option>
+                            <option value="1">危化品</option>
+                            <option value="2">财务</option>
+                            <option value="3">信息</option>
+                            <option value="4">经理</option>
+                        </select>
+                        <button class="btn1 btn btn-primary" type="submit" id="search" style="height:28px">查询</button>
+                        <div style="height: 5px;clear: both"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row box">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding :0px">
+                    <div class="btn-group" style="position: relative;float: left">
+                        <button class="btn btn-default" id = "btn_add">添加</button><button class="btn btn-default" type="button" id="btn_delete">删除</button><button class="btn btn-default" id = "btn_mend">修改</button>
+                    </div>
+                    <div style="clear: both"></div>
+                    <h4 class="table_title" style="margin:0;">员工信息</h4>
+                    <div style="width: 100%;overflow-x: scroll">
+                        <table id="table1"></table>
+                    </div>
+                    <div style="margin-top: 5px;">
+                        <div style="margin: 0 auto;float: left" id="page1"></div>
+                        <span id="total" style="float: left;color: #428bca;padding-top: 6px;font-size: 15px;margin-left: 5px">共1页</span>
+                        <input id="index" style="float: left;margin-left:5px;border: 1px solid #dddddd;width: 60px;height: 35px;">
+                        <button id="to" class="btn btn-primary" style="float: left;margin-left: 5px">跳转</button>
+                        <select style="float: left;margin-left: 5px;height: 35px;width: 50px" onchange="change(this)">
+                            <option value="5">5</option>
+                            <option value="10" selected = "selected">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

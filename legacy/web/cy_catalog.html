@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../commom/jquery211.min.js"></script>
+    <script type="text/javascript" src="../commom/bootstrap.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/catalog.css">
+    <script>
+        function setCookie(name,value) {
+            document.cookie = name + "="+ escape (value);
+        }
+        function getCookie(name) {
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+            if(arr=document.cookie.match(reg)) return unescape(arr[2]);
+            else return null;
+        }
+
+        $(document).ready(function() {
+            $('a').click(function () {
+                top.location.href = this.href;
+                var id = this.parentNode.id;
+                setCookie("cur_page",id);
+            })
+            var cur_page = getCookie("cur_page");
+            if(cur_page != null){
+                var page = document.getElementById(cur_page);
+                $(page).addClass("active");
+                $(page.parentNode).addClass("in");
+            }
+        });
+
+    </script>
+</head>
+<body style="background-color: transparent;margin-top: 2px">
+    <div class="panel-group" id="catalog">
+        <div class="panel panel-default" style="margin-top: 0">
+            <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#yundan">基本信息</div>
+            <ul id="yundan" class="nav nav-list collapse">
+                <li id="admin"><a href="cy_administrator.html">管理员信息</a></li>
+                <li id="driver"><a href="cy_driver.html">驾押员信息</a></li>
+                <li id="truckId"><a href="cy_truck.html">车辆信息</a></li>
+                <li id="goods"><a href="cy_goods.html">货物信息</a></li>
+                <li id="kehu"><a href="cy_tuoyun.html">客户信息</a></li>
+                <li id="route"><a href="cy_route.html">路线信息</a></li>
+                <li id="corporation"><a href="cy_corporationinfo.html">企业信息</a></li>
+            </ul>
+        </div>
+        <div class="panel panel-default" style="margin-top: 0">
+            <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#info">电子运单</div>
+            <ul id="info" class="nav nav-list collapse">
+                <li id="order"><a href="cy_order.html">订单派发</a></li>
+                <li id="fee"><a href="cy_feecheck.html">费用审核</a></li>
+            </ul>
+        </div>
+        <div class="panel panel-default" style="margin-top: 0">
+            <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#monitor">在途监控</div>
+            <ul id="monitor" class="nav nav-list collapse">
+                <li id="note"><a href="cy_note.html">实时监控</a></li>
+                <li id="alarm"><a href="cy_accidentquery.html">事故查询</a></li>
+                <li id="trucklog"><a href="cy_trucklog.html">出行车辆</a></li>
+                <li id="data"><a href="com_trucklog.html">行车数据</a></li>
+                <li id="lock"><a href="cy_lock.html">远程开锁</a></li>
+                <li id="data1"><a href="cy_data.html">数据采集</a></li>
+            </ul>
+        </div>
+        <div class="panel panel-default" style="margin-top: 0">
+            <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#form">数据统计</div>
+            <ul id="form" class="nav nav-list collapse">
+                <li id="truck_stats"><a href="cy_accidentstatis.html">事故统计</a></li>
+                <li id="order_stats"><a href="cy_orderstatis.html">订单统计</a></li>
+            </ul>
+        </div>
+        <div class="panel panel-default" style="margin-top: 0">
+            <div class="panel-heading" data-toggle="collapse"  data-parent="#catalog" href="#car">设备管理</div>
+            <ul id="car" class="nav nav-list collapse">
+                <li id="car_info"><a href="cy_carinfo.html">车辆档案</a></li>
+                <li id="repair"><a href="cy_repair.html">维修记录</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
