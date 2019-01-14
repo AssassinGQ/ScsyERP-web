@@ -290,29 +290,29 @@ const router = new VueRouter({
                 permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
             }
         }, {
-            path: 'lock',
-            component: DataView,
-            meta: {
-                group: '在途监控', title: '开锁管理',
-                permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
-            }
-        }, {
-            path: 'realtime',
-            component: DataView,
-            meta: {
-                group: '在途监控', title: '实时消息',
-                permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
-            }
-        }, {
-            path: 'accident-stats',
-            component: DataView,
-            meta: {
-                group: '数据统计', title: '事故统计',
-                permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
-            },
-            props: ({ params: { viewType = 'time' } }) => ({ viewType }),
-            children: [{ path: ':viewType?' }]
-        }, {
+        //     path: 'lock',
+        //     component: DataView,
+        //     meta: {
+        //         group: '在途监控', title: '开锁管理',
+        //         permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
+        //     }
+        // }, {
+        //     path: 'realtime',
+        //     component: DataView,
+        //     meta: {
+        //         group: '在途监控', title: '实时消息',
+        //         permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
+        //     }
+        // }, {
+        //     path: 'accident-stats',
+        //     component: DataView,
+        //     meta: {
+        //         group: '数据统计', title: '事故统计',
+        //         permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
+        //     },
+        //     props: ({ params: { viewType = 'time' } }) => ({ viewType }),
+        //     children: [{ path: ':viewType?' }]
+        // }, {
             path: 'order-stats',
             component: DataView,
             meta: {

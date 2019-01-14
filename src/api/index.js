@@ -2,8 +2,8 @@ import { DEBUG } from '../util'
 
 import axios from 'axios'
 
-// export const ENDPOINT = '120.76.219.196:8082'
-export const ENDPOINT = '127.0.0.1:8095/boss'
+export const ENDPOINT = '120.76.219.196:8082/ScsyERP'
+// export const ENDPOINT = '127.0.0.1:8095/boss'
 
 import store from '../store'
 
