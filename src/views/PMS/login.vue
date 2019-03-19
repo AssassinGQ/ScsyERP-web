@@ -21,6 +21,7 @@ import {
     TYPE_ESCORT,
     TYPE_GOV
 } from '../../store/modules/user'
+import store from '../../store'
 
 export default {
     name: 'login',

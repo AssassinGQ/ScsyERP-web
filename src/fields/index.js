@@ -11,9 +11,9 @@ export { default as USER_FIELDS } from './user'
 
 //TODO 增加查询参数支持
 export const ensureFieldOptions = fields => Promise.all(fields.map(field => {
-    let { type, options, optionsUrl, optionDisplayKey, optionValueKey } = field
+    let { type, options, optionsUrl, optionsParams, optionDisplayKey, optionValueKey } = field
     if (optionsUrl && (type === 'select' || type === 'multi-select')) {
-        let promise = GET(optionsUrl).then(({ data }) => {
+        let promise = GET(optionsUrl, optionsParams).then(({ data }) => {
             // console.log("in ensureFieldOptions, get data : ")
             // for(let x in data){
             //     console.log("get data["+x+"]:"+data[x])
