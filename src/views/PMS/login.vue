@@ -13,15 +13,13 @@
 <script>
 import { POST } from '../../api/index'
 import {
-    TYPE_BUYER,
     TYPE_CORP,
     TYPE_CORP_ADMIN,
     TYPE_SUPERADMIN,
     TYPE_MANUFACTURER,
     TYPE_DRIVER,
     TYPE_ESCORT,
-    TYPE_GOV,
-    state
+    TYPE_GOV
 } from '../../store/modules/user'
 
 export default {

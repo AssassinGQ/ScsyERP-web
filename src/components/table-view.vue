@@ -150,6 +150,8 @@ export default {
         baseUrl: String,
         // 若传入函数，则会将searchParams作为参数传入, 以此判断需要返回的queryUrl
         queryUrl: [String, Function],
+        queryParamKey: String,
+        queryParamValue: String,
         createUrl: String,
         updateUrl: String,
         deleteUrl: String,
@@ -358,11 +360,19 @@ export default {
             this.editingRow = clone(this.currentRow)
             let { queryUrl, queryParamKey, transformData } = this.customAction
             if (queryUrl) {
-                GET(queryUrl, { limit: 1, [queryParamKey]: this.currentRow[queryParamKey] })
-                    .then(({ data: [row] }) => {
-                        this.editingRow = transformData ? transformData(row) : row
-                        this.customEditing = true
-                    })
+                if(queryParamKey && queryParamValue){
+                    GET(queryUrl, { limit: 1, [queryParamKey]: this.currentRow[queryParamKey], queryParamKey: queryParamValue })
+                        .then(({ data: [row] }) => {
+                            this.editingRow = transformData ? transformData(row) : row
+                            this.customEditing = true
+                        })
+                }else{
+                    GET(queryUrl, { limit: 1, [queryParamKey]: this.currentRow[queryParamKey] })
+                        .then(({ data: [row] }) => {
+                            this.editingRow = transformData ? transformData(row) : row
+                            this.customEditing = true
+                        })
+                }
             } else {
                 if (transformData) this.editingRow = transformData(this.editingRow)
                 this.customEditing = true

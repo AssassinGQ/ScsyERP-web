@@ -236,35 +236,35 @@ const router = new VueRouter({
             component: ProjectView,
             meta: {
                 group: '工程项目', title: '项目工程',
-                permission: [TYPE_SUPERADMIN, TYPE_CUSTOMER]
+                permission: [TYPE_SUPERADMIN, TYPE_CUSTOMER, TYPE_CORP]
             }
         }, {
             path: 'InStorage',//入库，增查改，添加明细
             component: InStorageFormView,
             meta: {
                 group: '入库流程', title: '入库单',
-                permission: [TYPE_SUPERADMIN, TYPE_CUSTOMER]
+                permission: [TYPE_SUPERADMIN, TYPE_CUSTOMER, TYPE_CORP]
             }
         }, {
             path: 'OutStorage',//出库，增查改，添加明细
             component: OutStorageFormView,
             meta: {
                 group: '出库流程', title: '出库单',
-                permission: [TYPE_SUPERADMIN, TYPE_CUSTOMER]
+                permission: [TYPE_SUPERADMIN, TYPE_CUSTOMER, TYPE_CORP]
             }
         }, {
             path: 'OnTruckForm',
             component: OnTruckFormView,
             meta: {
                 group: '费用结算', title: '随车清单',
-                permission: [TYPE_SUPERADMIN, TYPE_CONSIGNEE]
+                permission: [TYPE_SUPERADMIN, TYPE_CONSIGNEE, TYPE_CORP]
             }
         }, {
             path: 'TransportContract',
             component: TransportContractView,
             meta: {
                 group: '费用结算', title: '运输合同',
-                permission: [TYPE_SUPERADMIN, TYPE_CONSIGNEE]
+                permission: [TYPE_SUPERADMIN, TYPE_CONSIGNEE, TYPE_CORP]
             }
         }, {
             path: 'latest-log',
