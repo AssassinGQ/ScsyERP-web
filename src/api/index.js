@@ -55,7 +55,7 @@ export const GET = (path, params) => axios.get(`http://${ENDPOINT}${path}`, {
     // headers: { 'Access-Control-Allow-Origin': 'http://120.76.219.196', 'Access-Control-Allow-Methods': 'GET' },
     // headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Access-Control-Request-Origin': 'http://120.76.219.196:8082', 'Access-Control-Request-Methods': 'POST' },
     params: {
-        corporation: store.getters.user.corporation,
+        // corporation: store.getters.user.corporation,
         ...params,
     }
 }).then(handleResponse)
