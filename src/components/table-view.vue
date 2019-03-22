@@ -100,9 +100,16 @@
                        layout="prev, pager, next, jumper"
                        :total="searchParams.total">
         </el-pagination>
-        <el-dialog width="720px" v-if="editing" :visible.sync="editing" :title="editingRow[idField] ? '编辑' : '添加'">
+        <el-dialog width="720px" v-if="editing" :visible.sync="editing" title="编辑">
             <form-view v-if="!customEditComponent" :fields="editFields" :target="editingRow"/>
             <component v-else :is="customEditComponent" :fields="editFields" :target="editingRow"></component>
+            <span slot="footer">
+                <el-button @click="resetEdit">取消</el-button>
+                <el-button type="primary" @click="submit">确定</el-button>
+            </span>
+        </el-dialog>
+        <el-dialog width="720px" v-else-if="creating" :visible.sync="creating" title="添加">
+            <form-view :fields="createFields" :target="editingRow"/>
             <span slot="footer">
                 <el-button @click="resetEdit">取消</el-button>
                 <el-button type="primary" @click="submit">确定</el-button>
@@ -230,6 +237,7 @@ export default {
         },
         result: [],
         editing: false,
+        creating: false,
         editingRow: undefined,
         currentRow: undefined,
         customEditing: false,
@@ -258,7 +266,30 @@ export default {
         },
         editFields() {
             return [].concat(this.fields, this.additionalFields)
-        }
+        },
+        createFields() {
+            console.log("in createFields");
+            return this.fields.reduce((obj, field) => {
+                // for(let x in field){
+                //     console.log("field[" + x + "]=" + field[x]);
+                // }
+                if (field.editable !== false) {
+                    if (field.increate == undefined) {
+                        // console.log("push1 " + field.key);
+                        obj.push(field);
+                    } else {
+                        if (field.increate) {
+                            // console.log("push2 " + field.key);
+                            obj.push(field);
+                        } else {
+                            // console.log("not push " + field.key);
+                        }
+                    }
+                }
+                return obj
+            }, []);
+            //return [].concat(this.fields, this.additionalFields)
+        },
     },
     methods: {
         search() {
@@ -289,10 +320,12 @@ export default {
         },
         create() {
             this.editingRow = this.fields.reduce((obj, field) => {
-                if (field.editable !== false) obj[field.key] = undefined
+                if (field.editable !== false)
+                    obj[field.key] = undefined
                 return obj
             }, {})
-            this.editing = true
+            //this.editing = true
+            this.creating = true
         },
         edit() {
             this.editingRow = clone(this.currentRow)
@@ -326,7 +359,12 @@ export default {
         },
         submit() {
             let { editingRow, idField, updateUrl, createUrl, baseUrl } = this
-            let isEdit = editingRow[idField]
+            // let isEdit = editingRow[idField]
+            let isEdit;
+            if(this.editing)
+                isEdit = true;
+            else
+                isEdit = false;
             if(isEdit){
                 editingRow.entityId = editingRow[idField]
             }
@@ -356,7 +394,8 @@ export default {
                 .then(this.resetEdit)
         },
         resetEdit() {
-            this.editing = false
+            this.editing = false;
+            this.creating = false;
             this.editingRow = undefined
         },
         // 自定义操作

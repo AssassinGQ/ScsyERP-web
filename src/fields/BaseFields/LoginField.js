@@ -6,5 +6,5 @@ export default Object.freeze([
     { key: 'passWord', label: '密码', },
     { key: 'phone', label: '手机号', },
     { key: 'name', label: '名称', },
-    { key: 'userId', label: '登录信息', queryOnly:true, },
+    { key: 'userId', label: '登录信息', queryOnly:true, increate: false },
 ])

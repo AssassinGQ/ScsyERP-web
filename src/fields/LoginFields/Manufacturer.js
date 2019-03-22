@@ -4,5 +4,5 @@ export default Object.freeze([
     ...loginField,
     { key: 'address', label: '地址', },
     { key: 'manName', label: '联系人姓名', },
-    { key: 'workshops', label: '下属生产车间', },
+    { key: 'workshops', label: '下属生产车间', increate: false},
 ])
