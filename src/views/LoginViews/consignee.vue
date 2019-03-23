@@ -1,16 +1,16 @@
 <template>
-    <table-view :fields="fields" base-url="/BasicInfo/Admin" :page-query-param="pageQueryParam"/>
+    <table-view :fields="fields" base-url="/BasicInfo/Consignee" :page-query-param="pageQueryParam"/>
 </template>
 <script>
 import TableView from '../../components/table-view'
-import adminField from '../../fields/LoginFields/Admin.js'
+import consigneeField from '../../fields/LoginFields/Consignee.js'
 import store from '../../store'
 
 export default {
-    name: 'administrator',
+    name: 'consignee',
     components: { TableView },
     data: () => ({
-        fields: adminField,
+        fields: consigneeField,
         pageQueryParam: [],
     }),
     created(){
