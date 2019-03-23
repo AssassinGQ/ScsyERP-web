@@ -1,5 +1,5 @@
 <template>
-    <table-view :fields="fields" :create-result-labels="createResultLabels" :actions="false" :custom-actions="customActions" query-url="/Pms/getAllRoles" />
+    <table-view :fields="fields" :actions="false" :custom-actions="customActions" query-url="/Pms/getAllRoles" />
 </template>
 <script>
 import TableView from '../../components/table-view'
@@ -14,10 +14,6 @@ export default {
             { key: 'name', label: '角色名称', },
             { key: 'desc', label: '角色描述', },
         ],
-        createResultLabels: {
-            // UserName: '用户名',
-            // password: '密码'
-        },
         customActions: [{
             label: '添加角色',
             url: '/Pms/addRole',

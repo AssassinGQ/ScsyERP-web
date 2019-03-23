@@ -1,5 +1,5 @@
 <template>
-    <table-view :fields="fields" :create-result-labels="createResultLabels" base-url="/BasicInfo/Product" :page-query-param="pageQueryParam"/>
+    <table-view :fields="fields" base-url="/BasicInfo/Product" :page-query-param="pageQueryParam"/>
 </template>
 <script>
 import TableView from '../../components/table-view'
@@ -12,10 +12,6 @@ export default {
     data: () => ({
         fields: productField,
         pageQueryParam: [],
-        createResultLabels: {
-            // UserName: '用户名',
-            // password: '密码'
-        }
     }),
     created(){
         if(store.getters.isSuper){

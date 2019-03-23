@@ -12,10 +12,6 @@ export default {
     data: () => ({
         fields: outStorageFormField,
         pageQueryParam: [],
-        createResultLabels: {
-            // UserName: '用户名',
-            // password: '密码'
-        },
         customActions: [{
             label: '添加明细',
             url: '/OutStorageForm/addProduct',

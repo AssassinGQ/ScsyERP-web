@@ -1,5 +1,5 @@
 <template>
-    <table-view :fields="fields" :create-result-labels="createResultLabels" :actions="false" :custom-actions="customActions" query-url="/user/findAllUser"/>
+    <table-view :fields="fields" :actions="false" :custom-actions="customActions" query-url="/user/findAllUser"/>
 </template>
 <script>
 import TableView from '../../components/table-view'
@@ -13,10 +13,6 @@ export default {
             ...baseField,
             { key: 'userName', label: '用户名', },
         ],
-        createResultLabels: {
-            // UserName: '用户名',
-            // password: '密码'
-        },
         customActions: [{
             label: '给用户添加角色',
             url: '/Pms/addUserRole',

@@ -1,21 +1,17 @@
 <template>
-    <table-view :fields="fields" :create-result-labels="createResultLabels" base-url="/BasicInfo/Admin" :page-query-param="pageQueryParam"/>
+    <table-view :fields="fields" base-url="/BasicInfo/Customer" :page-query-param="pageQueryParam"/>
 </template>
 <script>
 import TableView from '../../components/table-view'
-import adminField from '../../fields/LoginFields/Admin.js'
+import customerField from '../../fields/LoginFields/Customer.js'
 import store from '../../store'
 
 export default {
-    name: 'administrator',
+    name: 'customer',
     components: { TableView },
     data: () => ({
-        fields: adminField,
-        pageQueryParam: [],
-        createResultLabels: {
-            UserName: '用户名',
-            password: '密码'
-        }
+        fields: customerField,
+        pageQueryParam: []
     }),
     created(){
         if(store.getters.isSuper){

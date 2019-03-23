@@ -12,10 +12,6 @@ export default {
     data: () => ({
         fields: onTruckFormField,
         pageQueryParam: [],
-        createResultLabels: {
-            // UserName: '用户名',
-            // password: '密码'
-        },
         customActions: [{
             label: '添加图片',
             url: '/OnTruckForm/addPicture',

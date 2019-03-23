@@ -1,5 +1,5 @@
 <template>
-    <table-view :fields="fields" :create-result-labels="createResultLabels" base-url="/BasicInfo/Corporation" :actions="actions" :page-query-param="pageQueryParam"/>
+    <table-view :fields="fields" base-url="/BasicInfo/Corporation" :actions="actions" :page-query-param="pageQueryParam"/>
 </template>
 <script>
 import TableView from '../../components/table-view'
@@ -13,10 +13,6 @@ export default {
         actions: ['edit', 'delete'],
         fields: corporationField,
         pageQueryParam: [],
-        createResultLabels: {
-            UserName: '用户名',
-            password: '密码'
-        }
     }),
     created(){
         if(store.getters.isSuper){

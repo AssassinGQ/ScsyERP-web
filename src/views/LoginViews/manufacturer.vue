@@ -1,5 +1,5 @@
 <template>
-    <table-view :fields="fields" :create-result-labels="createResultLabels" base-url="/BasicInfo/Manufacturer" :custom-actions="customActions" :page-query-param="pageQueryParam"/>
+    <table-view :fields="fields" base-url="/BasicInfo/Manufacturer" :custom-actions="customActions" :page-query-param="pageQueryParam"/>
 </template>
 <script>
 import TableView from '../../components/table-view'
@@ -12,10 +12,6 @@ export default {
         data: () => ({
             fields: manufacturerField,
             pageQueryParam: [],
-            createResultLabels: {
-                UserName: '用户名',
-                password: '密码'
-            },
             customActions: [{
                 label: '添加生产车间',
                 url: '/BasicInfo/Manufacturer/addWorkshop',

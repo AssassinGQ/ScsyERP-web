@@ -12,10 +12,6 @@ export default {
     data: () => ({
         fields: transportContractField,
         pageQueryParam: [],
-        createResultLabels: {
-            // UserName: '用户名',
-            // password: '密码'
-        },
         customActions: [{
             label: '完成',
             url: '/TransportContract/complete',
