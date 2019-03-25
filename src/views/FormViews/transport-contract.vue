@@ -1,5 +1,5 @@
 <template>
-    <table-view :fields="fields" base-url="/TransportContract" :custom-actions="customActions" :page-query-param="pageQueryParam"/>
+    <table-view :fields="fields" base-url="/TransportContract" :actions="actions" :custom-actions="customActions" :page-query-param="pageQueryParam"/>
 </template>
 <script>
 import TableView from '../../components/table-view'
@@ -11,6 +11,7 @@ export default {
     components: { TableView },
     data: () => ({
         fields: transportContractField,
+        actions: ['edit', 'delete'],
         pageQueryParam: [],
         customActions: [{
             label: '完成',

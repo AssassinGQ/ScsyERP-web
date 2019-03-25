@@ -17,8 +17,8 @@ export default Object.freeze([
     { key: 'totalAmount', label: '货物数量', increate: false },
     { key: 'totalVolume', label: '总体积', increate: false },
     { key: 'totalWeight', label: '总重量', increate: false},
-    { key: 'RealOutStorageWeight', label: '实际出库重量', increate: false },
-    { key: 'DriveWorkerAverageWeight', label: '行车工平均重量', increate: false },
-    { key: 'LiftWorkerAverageWeight', label: '起重工平均重量', increate: false },
+    { key: 'realOutStorageWeight', label: '实际出库重量', increate: false },
+    { key: 'driveWorkerAverageWeight', label: '行车工平均重量', increate: false },
+    { key: 'liftWorkerAverageWeight', label: '起重工平均重量', increate: false },
     { key: 'products', label: '明细', increate: false},
 ])
