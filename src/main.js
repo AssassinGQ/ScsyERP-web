@@ -243,7 +243,7 @@ const router = new VueRouter({
             component: InStorageFormView,
             meta: {
                 group: '入库流程', title: '入库单',
-                permission: [TYPE_SUPERADMIN, TYPE_CUSTOMER, TYPE_CORP]
+                permission: [TYPE_SUPERADMIN, TYPE_CUSTOMER, TYPE_CORP, TYPE_CORP_ADMIN]
             }
         }, {
             path: 'OutStorage',//出库，增查改，添加明细
@@ -275,21 +275,23 @@ const router = new VueRouter({
                 permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
             },
             children: [{ path: ':viewType?' }]
-        }, {
-            path: 'data',
-            component: DataView,
-            meta: {
-                group: '在途监控', title: '历史日志',
-                permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
-            }
-        }, {
-            path: 'accidentquery',
-            component: DataView,
-            meta: {
-                group: '在途监控', title: '异常信息',
-                permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
-            }
-        }, {
+        // }, {
+        //     path: 'data',
+        //     component: DataView,
+        //     meta: {
+        //         group: '在途监控', title: '历史日志',
+        //         permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
+        //     }
+        // }, {
+        //     path: 'accidentquery',
+        //     component: DataView,
+        //     meta: {
+        //         group: '在途监控', title: '异常信息',
+        //         permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
+        //     }
+        // }, {
+
+
         //     path: 'lock',
         //     component: DataView,
         //     meta: {
@@ -313,14 +315,16 @@ const router = new VueRouter({
         //     props: ({ params: { viewType = 'time' } }) => ({ viewType }),
         //     children: [{ path: ':viewType?' }]
         // }, {
-            path: 'order-stats',
-            component: DataView,
-            meta: {
-                group: '数据统计', title: '订单统计',
-                permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
-            },
-            props: ({ params: { viewType = 'time' } }) => ({ viewType }),
-            children: [{ path: ':viewType?' }]
+
+
+            // path: 'order-stats',
+            // component: DataView,
+            // meta: {
+            //     group: '数据统计', title: '订单统计',
+            //     permission: [TYPE_SUPERADMIN, TYPE_CORP, TYPE_CORP_ADMIN]
+            // },
+            // props: ({ params: { viewType = 'time' } }) => ({ viewType }),
+            // children: [{ path: ':viewType?' }]
         }]
     }, {
         path: '/login',
