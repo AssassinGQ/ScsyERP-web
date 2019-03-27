@@ -1,5 +1,5 @@
 <template>
-    <table-view :fields="fields" :additional-fields="additionalFields" base-url="/document" query-url="/document/getList"/>
+    <table-view :fields="fields" :additional-fields="additionalFields" base-url="/document" query-url="/document/getList" topic-name="学习资料"/>
 </template>
 <script>
 export default {

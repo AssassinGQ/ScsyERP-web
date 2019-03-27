@@ -1,5 +1,5 @@
 <template>
-    <table-view :fields="fields" base-url="/OnTruckForm" :actions="actions" :custom-actions="customActions" :page-query-param="pageQueryParam"/>
+    <table-view :fields="fields" base-url="/OnTruckForm" :actions="actions" :custom-actions="customActions" :page-query-param="pageQueryParam" topic-name="随车清单"/>
 </template>
 <script>
 import TableView from '../../components/table-view'

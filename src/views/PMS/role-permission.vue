@@ -1,5 +1,5 @@
 <template>
-    <table-view :fields="fields" :actions="false" :custom-actions="customActions" query-url="/Pms/getAllRoles" />
+    <table-view :fields="fields" :actions="false" :custom-actions="customActions" query-url="/Pms/getAllRoles" topic-name="角色权限" />
 </template>
 <script>
 import TableView from '../../components/table-view'

@@ -1,6 +1,6 @@
 <template>
     <table-view :fields="fields" base-url="/exam" query-url="/exam/getList"
-                :custom-edit-component="$options.components.ExamView"/>
+                :custom-edit-component="$options.components.ExamView" topic-name="测试信息"/>
 </template>
 <script>
 import ExamView from './exam'

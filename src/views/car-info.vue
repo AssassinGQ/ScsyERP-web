@@ -2,6 +2,7 @@
     <table-view :fields="fields" :actions="actions" :custom-actions="customActions"
                 query-url="/basic_info/truck_info/truckarchives_query"
                 update-url="/basic_info/truck_info/truckarchives_update"
+                topic-name="车辆"
     />
 </template>
 <script>

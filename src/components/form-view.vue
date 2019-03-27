@@ -1,7 +1,7 @@
 <template>
     <el-form :inline="inline" :label-width="showLabel ? '100px' : ''" size="mini">
-        <template v-for="{ key, label, type, options, editable } in fields">
-            <el-form-item v-if="editable !== false" :key="key" :prop="key" size="small" :label="showLabel ? label : ''">
+        <template v-for="{ key, label, type, options, editable, nullAble } in fields">
+            <el-form-item v-if="editable !== false" :key="key" :prop="key" size="small" :label="showLabel ? (nullAble === false ? '*'+label : label) : ''">
                 <el-select :class="$style.editInput" v-if="type === 'select' || type === 'multi-select'"
                            v-model="target[key]" :multiple="type === 'multi-select'"
                            clearable :placeholder="label">

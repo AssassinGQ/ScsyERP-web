@@ -1,7 +1,7 @@
 <template>
     <div :class="$style.view">
         <div :class="$style.form">
-            <h1 :class="$style.title">工程物流运输平台</h1>
+            <h1 :class="$style.title">工程物流运输管理平台</h1>
             <el-input :class="$style.field" placeholder="用户名" v-model="userName"/>
             <el-input :class="$style.field" placeholder="密码" v-model="passWord" type="password"/>
             <el-button :class="$style.field" @click="login" type="primary">登录</el-button>

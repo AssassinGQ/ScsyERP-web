@@ -1,6 +1,6 @@
 <template>
     <table-view ref="fee_tableView" :fields="fields" base-url="/fareform" :limit="5" :actions="false"
-                :custom-actions="customActions">
+                :custom-actions="customActions" topic-name="费用结算">
         <template slot="customActionComponent" slot-scope="scope">
             <template v-if="scope.label === '一审'">
                 <detail-view :fields="firstCheckFields" :rows="2"

@@ -1,5 +1,5 @@
 <template>
-    <table-view :fields="fields" base-url="/OutStorageForm" :custom-actions="customActions"  :page-query-param="pageQueryParam"/>
+    <table-view :fields="fields" base-url="/OutStorageForm" :custom-actions="customActions"  :page-query-param="pageQueryParam" topic-name="出库单"/>
 </template>
 <script>
 import TableView from '../../components/table-view'

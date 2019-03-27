@@ -1,5 +1,5 @@
 <template>
-    <table-view :fields="fields" base-url="/BasicInfo/LiftWorker" :page-query-param="pageQueryParam"/>
+    <table-view :fields="fields" base-url="/BasicInfo/LiftWorker" :page-query-param="pageQueryParam" topic-name="起重工"/>
 </template>
 <script>
 import TableView from '../../components/table-view'

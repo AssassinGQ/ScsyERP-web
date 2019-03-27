@@ -3,12 +3,12 @@ import accountStatus from './AccountStatus.js'
 
 export default Object.freeze([
     ...formField,
-    { key: 'project', label: '项目工程', type: 'select', optionsUrl: '/BasicInfo/Project/query', },
+    { key: 'project', label: '项目工程', type: 'select', optionsUrl: '/BasicInfo/Project/query', nullAble: false },
     { key: 'outStorageStatus', label: '出库状态', type: 'select', options: { 0: '正在出库', 1: '出库完成'}, increate: false},
     { key: 'outStorageNumber', label: '出库单号', increate: false},
     { key: 'outStorageTime', label: '出库时间', type:"date", increate: false },
-    { key: 'warehouse', label: '出库仓库', type: 'select', optionsUrl: '/BasicInfo/Warehouse/query', },
-    { key: 'truck', label: '运输车辆', type: 'select', optionsUrl: '/BasicInfo/Truck/query', },
+    { key: 'warehouse', label: '出库仓库', type: 'select', optionsUrl: '/BasicInfo/Warehouse/query', nullAble: false },
+    { key: 'truck', label: '运输车辆', type: 'select', optionsUrl: '/BasicInfo/Truck/query', nullAble: false },
     { key: 'pickWorker', label: '提货人', type: 'select', optionsUrl: '/BasicInfo/Admin/query', },
     { key: 'lister', label: '制表人', type: 'select', optionsUrl: '/BasicInfo/Admin/query', },
     // { key: 'driveWorkers', label: '行车工', type: 'select', optionsUrl: '/BasicInfo/DriveWorker/query', },

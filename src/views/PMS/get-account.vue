@@ -1,7 +1,7 @@
 <template>
     <div :class="$style.view">
         <div :class="$style.form">
-            <h1 :class="$style.title">危化品运输平台</h1>
+            <h1 :class="$style.title">工程物流运输管理平台</h1>
             <el-select :class="$style.select" placeholder="类型" v-model="type" type="select" size="medium" style="width: 320px">
                 <el-option
                         v-for="(item, index) in options"

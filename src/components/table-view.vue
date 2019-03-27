@@ -100,7 +100,7 @@
                        layout="prev, pager, next, jumper"
                        :total="searchParams.total">
         </el-pagination>
-        <el-dialog width="720px" v-if="editing" :visible.sync="editing" title="编辑">
+        <el-dialog width="720px" v-if="editing" :visible.sync="editing" :title="updateTitle">
             <form-view v-if="!customEditComponent" :fields="editFields" :target="editingRow"/>
             <component v-else :is="customEditComponent" :fields="editFields" :target="editingRow"></component>
             <span slot="footer">
@@ -108,7 +108,7 @@
                 <el-button type="primary" @click="submit">确定</el-button>
             </span>
         </el-dialog>
-        <el-dialog width="720px" v-else-if="creating" :visible.sync="creating" title="添加">
+        <el-dialog width="720px" v-else-if="creating" :visible.sync="creating" :title="createTitle">
             <form-view :fields="createFields" :target="editingRow"/>
             <span slot="footer">
                 <el-button @click="resetEdit">取消</el-button>
@@ -160,6 +160,10 @@ export default {
         pageQueryParam : {
             type: Array,
             default: () => []
+        },
+        topicName: {
+            type: String,
+            default: "",
         },
         createUrl: String,
         updateUrl: String,
@@ -238,6 +242,8 @@ export default {
         result: [],
         editing: false,
         creating: false,
+        createTitle: "",
+        updateTitle: "",
         editingRow: undefined,
         currentRow: undefined,
         customEditing: false,
@@ -427,6 +433,8 @@ export default {
         }
     },
     created() {
+        this.createTitle = "创建" + this.topicName;
+        this.updateTitle = "更新" + this.topicName;
         this.autoQuery && this.search();
         ensureFieldOptions(this.fields)
     },
