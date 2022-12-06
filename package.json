@@ -26,7 +26,7 @@
     "echarts": "^4.0.4",
     "element-ui": "^2.2.2",
     "humanize-duration": "^3.14.0",
-    "qs": "^6.6.0",
+    "qs": "^6.6.1",
     "vue": "^2.5.11",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
